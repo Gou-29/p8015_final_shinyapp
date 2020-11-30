@@ -52,7 +52,8 @@ imdb_clean =
 
 
 
-##
+## Shiny data
+
 
 ## Radar
 imdb_vis <- read_csv("./Dataset/imdb_explore_clean.csv")
