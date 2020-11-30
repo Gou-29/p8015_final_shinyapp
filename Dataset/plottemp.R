@@ -1,46 +1,53 @@
 # plot template
-data <- 
-  matrix(data = AirPassengers, 
-         nrow = 12, 
-         ncol = 12,
-         byrow = T, 
-         dimnames = list(NULL,month.abb)) %>% 
-  as_tibble() %>% 
-  mutate(year = 1949:1960) %>% 
-  pivot_longer(Jan:Dec,
-               names_to = "month",
-               values_to = "value")
+
+library(tidyverse)
+library(plotly)
+#library(wordcloud2) 
+## Word cloud
 
 
 
-selectdata <- function(Year, Tibble){
+imdb_word_cloud <- 
+  imdb_vis %>% 
+  select(genres,plot_keyword,director_name, movie_title, 
+         actor_1_name, actor_2_name, actor_3_name)
+
+
+
+
+selectdata <- function(Genres, Tibble){
   value_vector <- 
     Tibble %>% 
-    filter(year == Year) %>% 
+    filter(genres == Genres) %>% 
     pull(value)
   return(value_vector)
 }
 
+add_closed_trace <- function(p, r, theta, ...) 
+{
+  plotly::add_trace(p, r = c(r, r[1]), theta = c(theta, theta[1]), ...)
+}
 
-plot_the_fig <- function(years){
+plot_the_fig <- function(Genreslist){
   
   output <- plot_ly(
     type = 'scatterpolar',
-    mode = "closest",
-    fill = "none")
+    mode = "closest")#,
+    #fill = "toself")
   
-  for (i in 1:length(years)){
-      output <- 
-        output %>% 
-        add_trace(
-          r = selectdata(years[i],data),
-          theta = month.name,
-          showlegend = T,
-          mode =  "toself",
-          name = years[i]) 
+  for (i in 1:length(Genreslist)){
+    output <- 
+      output %>% 
+      add_closed_trace(
+        r = selectdata(Genreslist[i],imdb_radar),
+        theta = name_list_radar[3:15],
+        showlegend = T,
+        mode =  "toself",
+        name = Genreslist[i]) 
   }
   
   return(output)
 }
 
-plot_the_fig(c(1949,1953,1954,1958:1960))
+            
+                                          

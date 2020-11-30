@@ -2,37 +2,39 @@
 
 # Functions:
 
-selectdata <- function(Year, Tibble){
+selectdata <- function(Genres, Tibble){
   value_vector <- 
     Tibble %>% 
-    filter(year == Year) %>% 
+    filter(genres == Genres) %>% 
     pull(value)
   return(value_vector)
 }
 
+add_closed_trace <- function(p, r, theta, ...) 
+{
+  plotly::add_trace(p, r = c(r, r[1]), theta = c(theta, theta[1]), ...)
+}
 
-plot_the_fig <- function(years){
+plot_the_fig <- function(Genreslist){
   
   output <- plot_ly(
     type = 'scatterpolar',
-    mode = "closest",
-    fill = "none")
+    mode = "closest")#,
+  #fill = "toself")
   
-  for (i in 1:length(years)){
+  for (i in 1:length(Genreslist)){
     output <- 
       output %>% 
-      add_trace(
-        r = selectdata(years[i],data),
-        theta = month.name,
+      add_closed_trace(
+        r = selectdata(Genreslist[i],radarplot_data),
+        theta = name_list_radar[3:15],
         showlegend = T,
         mode =  "toself",
-        name = years[i]) 
+        name = Genreslist[i]) 
   }
   
   return(output)
 }
-
-
 
 
 
