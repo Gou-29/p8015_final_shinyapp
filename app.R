@@ -59,10 +59,6 @@ ui <- dashboardPage(
                       fluidRow(
                         column(6, plotlyOutput("plot1")),
                         column(6, plotlyOutput("plot4")),
-                      ), 
-                      fluidRow(
-                        column(6, plotlyOutput("plot5")),
-                        column(6, plotlyOutput("plot6")),
                       )
              ),
              tabPanel("Biggest whales",
@@ -134,18 +130,6 @@ server <- function(input, output) {
     plot_the_fig(input$year)})
   
   output$plot4 <- renderPlotly({ 
-    
-    validate(need(length(input$year) > 0, "please select"))
-    
-    plot_the_fig(input$year)})
-  
-  output$plot5 <- renderPlotly({ 
-    
-    validate(need(length(input$year) > 0, "please select"))
-    
-    plot_the_fig(input$year)})
-  
-  output$plot6 <- renderPlotly({ 
     
     validate(need(length(input$year) > 0, "please select"))
     
