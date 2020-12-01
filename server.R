@@ -14,11 +14,22 @@ shinyServer(
     
     plot_radar(input$GenreList, name_list_radar_right)})
   
-  output$plot3 <- renderPlotly({ 
+  output$plot3 <- renderImage({ 
     
-    validate(need(length(input$GenreList) > 0, "please select"))
+    outfile <- tempfile(fileext='.gif')
     
-    plot_radar(input$GenreList, name_list_radar_right)})
+    #validate(need(length(input$GenreList) > 0, "please select"))
+    
+    p <- animate(plot_animation(input$GenreList), renderer = gifski_renderer())
+    
+    anim_save("outfile.gif", animation = p)
+    
+    list(src = "outfile.gif",
+         contentType = 'image/gif'
+         # width = 400,
+         # height = 300,
+         # alt = "This is alternate text"
+    )},deleteFile = TRUE)
   
   output$plot4 <- renderPlotly({ 
     

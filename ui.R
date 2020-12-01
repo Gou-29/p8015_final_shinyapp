@@ -39,17 +39,17 @@ dashboardPage(
   dashboardBody(
     fluidRow(
       tabBox(id = "tab", width = 12,
-             tabPanel("All traffic",
+             tabPanel("Radar plot",
                       fluidRow(
                         column(6, plotlyOutput("plot1")),
-                        column(6, plotlyOutput("plot4")),
+                        column(6, plotlyOutput("plot2")),
                       )
              ),
-             tabPanel("Biggest whales",
-                      plotlyOutput("plot2", width = 800, height = 500)
+             tabPanel("Animation plot",
+                      imageOutput("plot3", width = 800, height = 500)
              ),
              tabPanel("Whales by hour",
-                      plotlyOutput("plot3", width = 800, height = 500)
+                      plotlyOutput("plot4", width = 800, height = 500)
              )
       )
     )
