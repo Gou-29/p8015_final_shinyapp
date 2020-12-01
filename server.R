@@ -4,7 +4,7 @@ shinyServer(
   
   output$plot1 <- renderPlotly({ 
     
-    validate(need(length(input$GenreList) > 0, "please select"))
+    validate(need(length(input$GenreList) > 0, "Please select"))
     
     plot_radar(input$GenreList, name_list_radar_left)})
   
@@ -20,7 +20,9 @@ shinyServer(
     
     #validate(need(length(input$GenreList) > 0, "please select"))
     
-    p <- animate(plot_animation(input$GenreList), renderer = gifski_renderer())
+    p <- animate(plot_animation(input$GenreList), 
+                 renderer = gifski_renderer(),
+                 nframes = 60, fps=10, duration=5)
     
     anim_save("outfile.gif", animation = p)
     
@@ -31,11 +33,11 @@ shinyServer(
          # alt = "This is alternate text"
     )},deleteFile = TRUE)
   
-  output$plot4 <- renderPlotly({ 
+  output$plot4 <- renderPlot({ 
     
     validate(need(length(input$GenreList) > 0, "please select"))
     
-    plot_radar(input$GenreList, name_list_radar_right)})
+    plot_circulate(input$GenreList)})
   
   }
 )

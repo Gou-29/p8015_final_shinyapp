@@ -48,8 +48,8 @@ dashboardPage(
              tabPanel("Animation plot",
                       imageOutput("plot3", width = 800, height = 500)
              ),
-             tabPanel("Whales by hour",
-                      plotlyOutput("plot4", width = 800, height = 500)
+             tabPanel("Circulation",
+                      imageOutput("plot4", width = 1200, height = 800)
              )
       )
     )

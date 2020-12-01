@@ -12,11 +12,26 @@ library(tidyverse)
 library(wordcloud2)
 library(gganimate)
 library(gifski)
+library(viridis)
+
+
+# Global setting for plot:
+
+theme_set(theme_minimal() + theme(legend.position = "bottom"))
+options(
+  ggplot2.continuous.colour = "viridis",
+  ggplot2.continuous.fill = "viridis"
+)
+scale_colour_discrete = scale_color_viridis_d
+scale_fill_discrete = scale_fill_viridis_d
+
+
 
 #The data for plot
 
 radarplot_data <- read_csv("shiny_radar.csv")
-animation_plot <- read_csv("shiny_animation.csv")
+animation_data <- read_csv("shiny_animation.csv")
+circulation_data = read_csv("shiny_circulate.csv")
 
 name_list_radar_right <- c("movie_title","genres",
                            "director_facebook_likes","actor_3_facebook_likes",
@@ -68,7 +83,7 @@ plot_radar <- function(Genreslist_Radar, plot_Varlist){
 
 plot_animation <- function(Genreslist_Animation){
   p <- 
-    animation_plot %>%  
+    animation_data %>%  
     drop_na(month) %>% 
     filter(genres %in% Genreslist_Animation) %>% 
     group_by(genres, month) %>%
@@ -79,8 +94,46 @@ plot_animation <- function(Genreslist_Animation){
     labs(title = "Trends of mean_gross by genres over months",
          x = "Month", 
          y = "Mean Gross") +
-    theme(axis.text.x = element_text(angle = 45))
+    theme(axis.text.x = element_text(angle = 45)) 
   p<- p + transition_reveal(month)
   return(p)
+}
+
+
+## 3. Circular plot
+
+
+plot_circulate <- function(Genrelist_Circulate)
+{
+  data <-
+    circulation_data %>% 
+    filter(genres %in% Genrelist_Circulate)
+  data = data %>% arrange(genres)
+  data$id = seq(1, nrow(data))
+  
+  label_data = data
+  number_of_bar = nrow(label_data)
+  angle = 90 - 360 * (label_data$id-0.5) /number_of_bar   
+  label_data$hjust = ifelse( angle < -90, 1 - 0.15, 0 + 0.15) # Where is the word
+  label_data$angle = ifelse( angle < -90, angle+180, angle)
+  
+  fplot = 
+    ggplot(data, aes(x=as.factor(id), y=gross, fill=genres)) +   
+    geom_bar(aes(x=as.factor(id), y=gross, fill=genres), stat="identity", alpha=0.5) +
+    ylim(-500000000, max(data$gross)) +
+    theme_minimal() +
+    theme(
+      legend.position = "right",
+      axis.text = element_blank(),
+      axis.title = element_blank(),
+      panel.grid = element_blank(),
+      plot.margin = unit(rep(-1,4), "cm") 
+    ) +
+    coord_polar() + 
+    geom_text(data=label_data, aes(x=id, y=gross, label=movie_title, hjust=hjust), 
+              color="black", fontface="bold",alpha=0.6, size = 2.5,
+              angle= label_data$angle , inherit.aes = FALSE) 
+  
+  return(fplot)
 }
 

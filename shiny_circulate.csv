@@ -1,0 +1,181 @@
+movie_title,gross,genres
+Avatar ,760505847,Action
+Avatar ,760505847,Adventure
+Avatar ,760505847,Fantasy
+Avatar ,760505847,Sci-Fi
+Titanic ,658672302,Drama
+Titanic ,658672302,Romance
+Jurassic World ,652177271,Action
+Jurassic World ,652177271,Adventure
+Jurassic World ,652177271,Sci-Fi
+Jurassic World ,652177271,Thriller
+The Avengers ,623279547,Action
+The Avengers ,623279547,Adventure
+The Avengers ,623279547,Sci-Fi
+The Avengers ,623279547,Action
+The Avengers ,623279547,Adventure
+The Avengers ,623279547,Sci-Fi
+The Dark Knight ,533316061,Action
+The Dark Knight ,533316061,Crime
+The Dark Knight ,533316061,Drama
+The Dark Knight ,533316061,Thriller
+Star Wars: Episode I - The Phantom Menace ,474544677,Action
+Star Wars: Episode I - The Phantom Menace ,474544677,Adventure
+Star Wars: Episode I - The Phantom Menace ,474544677,Fantasy
+Star Wars: Episode I - The Phantom Menace ,474544677,Sci-Fi
+Star Wars: Episode IV - A New Hope ,460935665,Action
+Star Wars: Episode IV - A New Hope ,460935665,Adventure
+Star Wars: Episode IV - A New Hope ,460935665,Fantasy
+Star Wars: Episode IV - A New Hope ,460935665,Sci-Fi
+Avengers: Age of Ultron ,458991599,Action
+Avengers: Age of Ultron ,458991599,Adventure
+Avengers: Age of Ultron ,458991599,Sci-Fi
+The Dark Knight Rises ,448130642,Action
+The Dark Knight Rises ,448130642,Thriller
+Shrek 2 ,436471036,Adventure
+Shrek 2 ,436471036,Animation
+Shrek 2 ,436471036,Comedy
+Shrek 2 ,436471036,Family
+Shrek 2 ,436471036,Fantasy
+Shrek 2 ,436471036,Romance
+E.T. the Extra-Terrestrial ,434949459,Family
+E.T. the Extra-Terrestrial ,434949459,Sci-Fi
+The Hunger Games: Catching Fire ,424645577,Adventure
+The Hunger Games: Catching Fire ,424645577,Sci-Fi
+The Hunger Games: Catching Fire ,424645577,Thriller
+Pirates of the Caribbean: Dead Man's Chest ,423032628,Action
+Pirates of the Caribbean: Dead Man's Chest ,423032628,Adventure
+Pirates of the Caribbean: Dead Man's Chest ,423032628,Fantasy
+The Lion King ,422783777,Adventure
+The Lion King ,422783777,Animation
+The Lion King ,422783777,Drama
+The Lion King ,422783777,Family
+The Lion King ,422783777,Musical
+Toy Story 3 ,414984497,Adventure
+Toy Story 3 ,414984497,Animation
+Toy Story 3 ,414984497,Comedy
+Toy Story 3 ,414984497,Family
+Toy Story 3 ,414984497,Fantasy
+Iron Man 3 ,408992272,Action
+Iron Man 3 ,408992272,Adventure
+Iron Man 3 ,408992272,Sci-Fi
+The Hunger Games ,407999255,Adventure
+The Hunger Games ,407999255,Drama
+The Hunger Games ,407999255,Sci-Fi
+The Hunger Games ,407999255,Thriller
+Captain America: Civil War ,407197282,Action
+Captain America: Civil War ,407197282,Adventure
+Captain America: Civil War ,407197282,Sci-Fi
+Spider-Man ,403706375,Action
+Spider-Man ,403706375,Adventure
+Spider-Man ,403706375,Fantasy
+Spider-Man ,403706375,Romance
+Transformers: Revenge of the Fallen ,402076689,Action
+Transformers: Revenge of the Fallen ,402076689,Adventure
+Transformers: Revenge of the Fallen ,402076689,Sci-Fi
+Frozen ,400736600,Adventure
+Frozen ,400736600,Animation
+Frozen ,400736600,Comedy
+Frozen ,400736600,Family
+Frozen ,400736600,Fantasy
+Frozen ,400736600,Musical
+Finding Nemo ,380838870,Adventure
+Finding Nemo ,380838870,Animation
+Finding Nemo ,380838870,Comedy
+Finding Nemo ,380838870,Family
+Star Wars: Episode III - Revenge of the Sith ,380262555,Action
+Star Wars: Episode III - Revenge of the Sith ,380262555,Adventure
+Star Wars: Episode III - Revenge of the Sith ,380262555,Fantasy
+Star Wars: Episode III - Revenge of the Sith ,380262555,Sci-Fi
+The Lord of the Rings: The Return of the King ,377019252,Action
+The Lord of the Rings: The Return of the King ,377019252,Adventure
+The Lord of the Rings: The Return of the King ,377019252,Drama
+The Lord of the Rings: The Return of the King ,377019252,Fantasy
+Spider-Man 2 ,373377893,Action
+Spider-Man 2 ,373377893,Adventure
+Spider-Man 2 ,373377893,Fantasy
+Spider-Man 2 ,373377893,Romance
+Despicable Me 2 ,368049635,Animation
+Despicable Me 2 ,368049635,Comedy
+Despicable Me 2 ,368049635,Family
+Despicable Me 2 ,368049635,Sci-Fi
+Deadpool ,363024263,Action
+Deadpool ,363024263,Adventure
+Deadpool ,363024263,Comedy
+Deadpool ,363024263,Romance
+Deadpool ,363024263,Sci-Fi
+The Jungle Book ,362645141,Adventure
+The Jungle Book ,362645141,Drama
+The Jungle Book ,362645141,Family
+The Jungle Book ,362645141,Fantasy
+The Jungle Book ,362645141,Adventure
+The Jungle Book ,362645141,Drama
+The Jungle Book ,362645141,Family
+The Jungle Book ,362645141,Fantasy
+Jurassic Park ,356784000,Adventure
+Jurassic Park ,356784000,Sci-Fi
+Jurassic Park ,356784000,Thriller
+Inside Out ,356454367,Adventure
+Inside Out ,356454367,Animation
+Inside Out ,356454367,Comedy
+Inside Out ,356454367,Drama
+Inside Out ,356454367,Family
+Inside Out ,356454367,Fantasy
+Transformers: Dark of the Moon ,352358779,Action
+Transformers: Dark of the Moon ,352358779,Adventure
+Transformers: Dark of the Moon ,352358779,Sci-Fi
+American Sniper ,350123553,Action
+American Sniper ,350123553,Biography
+American Sniper ,350123553,Drama
+American Sniper ,350123553,History
+American Sniper ,350123553,Thriller
+American Sniper ,350123553,War
+Furious 7 ,350034110,Action
+Furious 7 ,350034110,Crime
+Furious 7 ,350034110,Thriller
+The Lord of the Rings: The Two Towers ,340478898,Action
+The Lord of the Rings: The Two Towers ,340478898,Adventure
+The Lord of the Rings: The Two Towers ,340478898,Drama
+The Lord of the Rings: The Two Towers ,340478898,Fantasy
+The Hunger Games: Mockingjay - Part 1 ,337103873,Adventure
+The Hunger Games: Mockingjay - Part 1 ,337103873,Sci-Fi
+The Hunger Games: Mockingjay - Part 1 ,337103873,Thriller
+Spider-Man 3 ,336530303,Action
+Spider-Man 3 ,336530303,Adventure
+Spider-Man 3 ,336530303,Romance
+Spider-Man 3 ,336530303,Action
+Spider-Man 3 ,336530303,Adventure
+Spider-Man 3 ,336530303,Romance
+Minions ,336029560,Action
+Minions ,336029560,Animation
+Minions ,336029560,Comedy
+Minions ,336029560,Family
+Minions ,336029560,Sci-Fi
+Alice in Wonderland ,334185206,Adventure
+Alice in Wonderland ,334185206,Family
+Alice in Wonderland ,334185206,Fantasy
+Alice in Wonderland ,334185206,Adventure
+Alice in Wonderland ,334185206,Family
+Alice in Wonderland ,334185206,Fantasy
+Guardians of the Galaxy ,333130696,Action
+Guardians of the Galaxy ,333130696,Adventure
+Guardians of the Galaxy ,333130696,Sci-Fi
+Batman v Superman: Dawn of Justice ,330249062,Action
+Batman v Superman: Dawn of Justice ,330249062,Adventure
+Batman v Superman: Dawn of Justice ,330249062,Sci-Fi
+Forrest Gump ,329691196,Comedy
+Forrest Gump ,329691196,Drama
+The Secret Life of Pets ,323505540,Animation
+The Secret Life of Pets ,323505540,Comedy
+The Secret Life of Pets ,323505540,Family
+Shrek the Third ,320706665,Adventure
+Shrek the Third ,320706665,Animation
+Shrek the Third ,320706665,Comedy
+Shrek the Third ,320706665,Family
+Shrek the Third ,320706665,Fantasy
+Transformers ,318759914,Action
+Transformers ,318759914,Adventure
+Transformers ,318759914,Sci-Fi
+Iron Man ,318298180,Action
+Iron Man ,318298180,Adventure
+Iron Man ,318298180,Sci-Fi
