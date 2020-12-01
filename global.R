@@ -13,7 +13,7 @@ library(wordcloud2)
 library(gganimate)
 library(gifski)
 library(viridis)
-
+library(lazyeval)
 
 # Global setting for plot:
 
@@ -137,3 +137,61 @@ plot_circulate <- function(Genrelist_Circulate)
   return(fplot)
 }
 
+## 4. Animation 2:
+
+plot_animation_2 <- function(Genrelist_Animation_2)
+{
+  accumulate_by <- function(dat, var) {
+    var <- lazyeval::f_eval(var, dat)
+    lvls <- plotly:::getLevels(var)
+    dats <- lapply(seq_along(lvls), function(x) {
+      cbind(dat[var %in% lvls[seq(1, x)], ], frame = lvls[[x]])
+    })
+    dplyr::bind_rows(dats)
+  }
+  
+  p <- 
+    animation_data %>%  
+    drop_na(month) %>% 
+    filter(genres %in% Genrelist_Animation_2) %>% 
+    group_by(genres, month) %>%
+    summarize(mean_gross = mean(gross))
+  
+  p <- p %>% accumulate_by( ~ month)
+  
+  p <- p %>%
+    plot_ly(
+      x = ~month, 
+      y = ~mean_gross,
+      split = ~ genres,
+      frame = ~frame, 
+      type = 'scatter',
+      mode = 'lines + markers', 
+      line = list(simplyfy = F),
+      marker = list(size = 10)
+    )
+  p <- p %>% layout(
+    xaxis = list(
+      title = "Month",
+      zeroline = F
+    ),
+    yaxis = list(
+      title = "Mean_Gross",
+      zeroline = F
+    )
+  ) 
+  p <- p %>% animation_opts(
+    frame = 100, 
+    transition = 0, 
+    redraw = FALSE
+  )
+  p <- p %>% animation_slider(
+    hide = T
+  )
+  p <- p %>% animation_button(
+    x = 1, xanchor = "right", y = 0, yanchor = "bottom"
+  )
+  
+  return(p)
+  
+}

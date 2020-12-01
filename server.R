@@ -39,5 +39,11 @@ shinyServer(
     
     plot_circulate(input$GenreList)})
   
+  output$plot5 <- renderPlotly({ 
+    
+    validate(need(length(input$GenreList) > 0, "please select"))
+    
+    plot_animation_2(input$GenreList)})
+  
   }
 )

@@ -50,6 +50,9 @@ dashboardPage(
              ),
              tabPanel("Circulation",
                       imageOutput("plot4", width = 1200, height = 800)
+             ),
+             tabPanel("Circulation 2",
+                      plotlyOutput("plot5", width = 1200, height = 800)
              )
       )
     )
