@@ -1,0 +1,185 @@
+movie_title,director_name,title_year,gross,genres
+Star Wars: Episode II - Attack of the Clones ,George Lucas,2002,310675583,Action
+Star Wars: Episode II - Attack of the Clones ,George Lucas,2002,310675583,Adventure
+Star Wars: Episode II - Attack of the Clones ,George Lucas,2002,310675583,Fantasy
+Star Wars: Episode II - Attack of the Clones ,George Lucas,2002,310675583,Sci-Fi
+Iron Man 2 ,Jon Favreau,2010,312057433,Action
+Iron Man 2 ,Jon Favreau,2010,312057433,Adventure
+Iron Man 2 ,Jon Favreau,2010,312057433,Sci-Fi
+The Lord of the Rings: The Fellowship of the Ring ,Peter Jackson,2001,313837577,Action
+The Lord of the Rings: The Fellowship of the Ring ,Peter Jackson,2001,313837577,Adventure
+The Lord of the Rings: The Fellowship of the Ring ,Peter Jackson,2001,313837577,Drama
+The Lord of the Rings: The Fellowship of the Ring ,Peter Jackson,2001,313837577,Fantasy
+Indiana Jones and the Kingdom of the Crystal Skull ,Steven Spielberg,2008,317011114,Action
+Indiana Jones and the Kingdom of the Crystal Skull ,Steven Spielberg,2008,317011114,Adventure
+Indiana Jones and the Kingdom of the Crystal Skull ,Steven Spielberg,2008,317011114,Fantasy
+Harry Potter and the Sorcerer's Stone ,Chris Columbus,2001,317557891,Adventure
+Harry Potter and the Sorcerer's Stone ,Chris Columbus,2001,317557891,Family
+Harry Potter and the Sorcerer's Stone ,Chris Columbus,2001,317557891,Fantasy
+Iron Man ,Jon Favreau,2008,318298180,Action
+Iron Man ,Jon Favreau,2008,318298180,Adventure
+Iron Man ,Jon Favreau,2008,318298180,Sci-Fi
+Transformers ,Michael Bay,2007,318759914,Action
+Transformers ,Michael Bay,2007,318759914,Adventure
+Transformers ,Michael Bay,2007,318759914,Sci-Fi
+Shrek the Third ,Chris Miller,2007,320706665,Adventure
+Shrek the Third ,Chris Miller,2007,320706665,Animation
+Shrek the Third ,Chris Miller,2007,320706665,Comedy
+Shrek the Third ,Chris Miller,2007,320706665,Family
+Shrek the Third ,Chris Miller,2007,320706665,Fantasy
+The Secret Life of Pets ,Yarrow Cheney,2016,323505540,Animation
+The Secret Life of Pets ,Yarrow Cheney,2016,323505540,Comedy
+The Secret Life of Pets ,Yarrow Cheney,2016,323505540,Family
+Forrest Gump ,Robert Zemeckis,1994,329691196,Comedy
+Forrest Gump ,Robert Zemeckis,1994,329691196,Drama
+Batman v Superman: Dawn of Justice ,Zack Snyder,2016,330249062,Action
+Batman v Superman: Dawn of Justice ,Zack Snyder,2016,330249062,Adventure
+Batman v Superman: Dawn of Justice ,Zack Snyder,2016,330249062,Sci-Fi
+Guardians of the Galaxy ,James Gunn,2014,333130696,Action
+Guardians of the Galaxy ,James Gunn,2014,333130696,Adventure
+Guardians of the Galaxy ,James Gunn,2014,333130696,Sci-Fi
+Alice in Wonderland ,Tim Burton,2010,334185206,Adventure
+Alice in Wonderland ,Tim Burton,2010,334185206,Family
+Alice in Wonderland ,Tim Burton,2010,334185206,Fantasy
+Minions ,Kyle Balda,2015,336029560,Action
+Minions ,Kyle Balda,2015,336029560,Animation
+Minions ,Kyle Balda,2015,336029560,Comedy
+Minions ,Kyle Balda,2015,336029560,Family
+Minions ,Kyle Balda,2015,336029560,Sci-Fi
+Spider-Man 3 ,Sam Raimi,2007,336530303,Action
+Spider-Man 3 ,Sam Raimi,2007,336530303,Adventure
+Spider-Man 3 ,Sam Raimi,2007,336530303,Romance
+The Hunger Games: Mockingjay - Part 1 ,Francis Lawrence,2014,337103873,Adventure
+The Hunger Games: Mockingjay - Part 1 ,Francis Lawrence,2014,337103873,Sci-Fi
+The Hunger Games: Mockingjay - Part 1 ,Francis Lawrence,2014,337103873,Thriller
+The Lord of the Rings: The Two Towers ,Peter Jackson,2002,340478898,Action
+The Lord of the Rings: The Two Towers ,Peter Jackson,2002,340478898,Adventure
+The Lord of the Rings: The Two Towers ,Peter Jackson,2002,340478898,Drama
+The Lord of the Rings: The Two Towers ,Peter Jackson,2002,340478898,Fantasy
+Furious 7 ,James Wan,2015,350034110,Action
+Furious 7 ,James Wan,2015,350034110,Crime
+Furious 7 ,James Wan,2015,350034110,Thriller
+American Sniper ,Clint Eastwood,2014,350123553,Action
+American Sniper ,Clint Eastwood,2014,350123553,Biography
+American Sniper ,Clint Eastwood,2014,350123553,Drama
+American Sniper ,Clint Eastwood,2014,350123553,History
+American Sniper ,Clint Eastwood,2014,350123553,Thriller
+American Sniper ,Clint Eastwood,2014,350123553,War
+Transformers: Dark of the Moon ,Michael Bay,2011,352358779,Action
+Transformers: Dark of the Moon ,Michael Bay,2011,352358779,Adventure
+Transformers: Dark of the Moon ,Michael Bay,2011,352358779,Sci-Fi
+Inside Out ,Pete Docter,2015,356454367,Adventure
+Inside Out ,Pete Docter,2015,356454367,Animation
+Inside Out ,Pete Docter,2015,356454367,Comedy
+Inside Out ,Pete Docter,2015,356454367,Drama
+Inside Out ,Pete Docter,2015,356454367,Family
+Inside Out ,Pete Docter,2015,356454367,Fantasy
+Jurassic Park ,Steven Spielberg,1993,356784000,Adventure
+Jurassic Park ,Steven Spielberg,1993,356784000,Sci-Fi
+Jurassic Park ,Steven Spielberg,1993,356784000,Thriller
+The Jungle Book ,Jon Favreau,2016,362645141,Adventure
+The Jungle Book ,Jon Favreau,2016,362645141,Drama
+The Jungle Book ,Jon Favreau,2016,362645141,Family
+The Jungle Book ,Jon Favreau,2016,362645141,Fantasy
+Deadpool ,Tim Miller,2016,363024263,Action
+Deadpool ,Tim Miller,2016,363024263,Adventure
+Deadpool ,Tim Miller,2016,363024263,Comedy
+Deadpool ,Tim Miller,2016,363024263,Romance
+Deadpool ,Tim Miller,2016,363024263,Sci-Fi
+Despicable Me 2 ,Pierre Coffin,2013,368049635,Animation
+Despicable Me 2 ,Pierre Coffin,2013,368049635,Comedy
+Despicable Me 2 ,Pierre Coffin,2013,368049635,Family
+Despicable Me 2 ,Pierre Coffin,2013,368049635,Sci-Fi
+Spider-Man 2 ,Sam Raimi,2004,373377893,Action
+Spider-Man 2 ,Sam Raimi,2004,373377893,Adventure
+Spider-Man 2 ,Sam Raimi,2004,373377893,Fantasy
+Spider-Man 2 ,Sam Raimi,2004,373377893,Romance
+The Lord of the Rings: The Return of the King ,Peter Jackson,2003,377019252,Action
+The Lord of the Rings: The Return of the King ,Peter Jackson,2003,377019252,Adventure
+The Lord of the Rings: The Return of the King ,Peter Jackson,2003,377019252,Drama
+The Lord of the Rings: The Return of the King ,Peter Jackson,2003,377019252,Fantasy
+Star Wars: Episode III - Revenge of the Sith ,George Lucas,2005,380262555,Action
+Star Wars: Episode III - Revenge of the Sith ,George Lucas,2005,380262555,Adventure
+Star Wars: Episode III - Revenge of the Sith ,George Lucas,2005,380262555,Fantasy
+Star Wars: Episode III - Revenge of the Sith ,George Lucas,2005,380262555,Sci-Fi
+Finding Nemo ,Andrew Stanton,2003,380838870,Adventure
+Finding Nemo ,Andrew Stanton,2003,380838870,Animation
+Finding Nemo ,Andrew Stanton,2003,380838870,Comedy
+Finding Nemo ,Andrew Stanton,2003,380838870,Family
+Frozen ,Chris Buck,2013,400736600,Adventure
+Frozen ,Chris Buck,2013,400736600,Animation
+Frozen ,Chris Buck,2013,400736600,Comedy
+Frozen ,Chris Buck,2013,400736600,Family
+Frozen ,Chris Buck,2013,400736600,Fantasy
+Frozen ,Chris Buck,2013,400736600,Musical
+Transformers: Revenge of the Fallen ,Michael Bay,2009,402076689,Action
+Transformers: Revenge of the Fallen ,Michael Bay,2009,402076689,Adventure
+Transformers: Revenge of the Fallen ,Michael Bay,2009,402076689,Sci-Fi
+Spider-Man ,Sam Raimi,2002,403706375,Action
+Spider-Man ,Sam Raimi,2002,403706375,Adventure
+Spider-Man ,Sam Raimi,2002,403706375,Fantasy
+Spider-Man ,Sam Raimi,2002,403706375,Romance
+Captain America: Civil War ,Anthony Russo,2016,407197282,Action
+Captain America: Civil War ,Anthony Russo,2016,407197282,Adventure
+Captain America: Civil War ,Anthony Russo,2016,407197282,Sci-Fi
+The Hunger Games ,Gary Ross,2012,407999255,Adventure
+The Hunger Games ,Gary Ross,2012,407999255,Drama
+The Hunger Games ,Gary Ross,2012,407999255,Sci-Fi
+The Hunger Games ,Gary Ross,2012,407999255,Thriller
+Iron Man 3 ,Shane Black,2013,408992272,Action
+Iron Man 3 ,Shane Black,2013,408992272,Adventure
+Iron Man 3 ,Shane Black,2013,408992272,Sci-Fi
+Toy Story 3 ,Lee Unkrich,2010,414984497,Adventure
+Toy Story 3 ,Lee Unkrich,2010,414984497,Animation
+Toy Story 3 ,Lee Unkrich,2010,414984497,Comedy
+Toy Story 3 ,Lee Unkrich,2010,414984497,Family
+Toy Story 3 ,Lee Unkrich,2010,414984497,Fantasy
+The Lion King ,Roger Allers,1994,422783777,Adventure
+The Lion King ,Roger Allers,1994,422783777,Animation
+The Lion King ,Roger Allers,1994,422783777,Drama
+The Lion King ,Roger Allers,1994,422783777,Family
+The Lion King ,Roger Allers,1994,422783777,Musical
+Pirates of the Caribbean: Dead Man's Chest ,Gore Verbinski,2006,423032628,Action
+Pirates of the Caribbean: Dead Man's Chest ,Gore Verbinski,2006,423032628,Adventure
+Pirates of the Caribbean: Dead Man's Chest ,Gore Verbinski,2006,423032628,Fantasy
+The Hunger Games: Catching Fire ,Francis Lawrence,2013,424645577,Adventure
+The Hunger Games: Catching Fire ,Francis Lawrence,2013,424645577,Sci-Fi
+The Hunger Games: Catching Fire ,Francis Lawrence,2013,424645577,Thriller
+E.T. the Extra-Terrestrial ,Steven Spielberg,1982,434949459,Family
+E.T. the Extra-Terrestrial ,Steven Spielberg,1982,434949459,Sci-Fi
+Shrek 2 ,Andrew Adamson,2004,436471036,Adventure
+Shrek 2 ,Andrew Adamson,2004,436471036,Animation
+Shrek 2 ,Andrew Adamson,2004,436471036,Comedy
+Shrek 2 ,Andrew Adamson,2004,436471036,Family
+Shrek 2 ,Andrew Adamson,2004,436471036,Fantasy
+Shrek 2 ,Andrew Adamson,2004,436471036,Romance
+The Dark Knight Rises ,Christopher Nolan,2012,448130642,Action
+The Dark Knight Rises ,Christopher Nolan,2012,448130642,Thriller
+Avengers: Age of Ultron ,Joss Whedon,2015,458991599,Action
+Avengers: Age of Ultron ,Joss Whedon,2015,458991599,Adventure
+Avengers: Age of Ultron ,Joss Whedon,2015,458991599,Sci-Fi
+Star Wars: Episode IV - A New Hope ,George Lucas,1977,460935665,Action
+Star Wars: Episode IV - A New Hope ,George Lucas,1977,460935665,Adventure
+Star Wars: Episode IV - A New Hope ,George Lucas,1977,460935665,Fantasy
+Star Wars: Episode IV - A New Hope ,George Lucas,1977,460935665,Sci-Fi
+Star Wars: Episode I - The Phantom Menace ,George Lucas,1999,474544677,Action
+Star Wars: Episode I - The Phantom Menace ,George Lucas,1999,474544677,Adventure
+Star Wars: Episode I - The Phantom Menace ,George Lucas,1999,474544677,Fantasy
+Star Wars: Episode I - The Phantom Menace ,George Lucas,1999,474544677,Sci-Fi
+The Dark Knight ,Christopher Nolan,2008,533316061,Action
+The Dark Knight ,Christopher Nolan,2008,533316061,Crime
+The Dark Knight ,Christopher Nolan,2008,533316061,Drama
+The Dark Knight ,Christopher Nolan,2008,533316061,Thriller
+The Avengers ,Joss Whedon,2012,623279547,Action
+The Avengers ,Joss Whedon,2012,623279547,Adventure
+The Avengers ,Joss Whedon,2012,623279547,Sci-Fi
+Jurassic World ,Colin Trevorrow,2015,652177271,Action
+Jurassic World ,Colin Trevorrow,2015,652177271,Adventure
+Jurassic World ,Colin Trevorrow,2015,652177271,Sci-Fi
+Jurassic World ,Colin Trevorrow,2015,652177271,Thriller
+Titanic ,James Cameron,1997,658672302,Drama
+Titanic ,James Cameron,1997,658672302,Romance
+Avatar ,James Cameron,2009,760505847,Action
+Avatar ,James Cameron,2009,760505847,Adventure
+Avatar ,James Cameron,2009,760505847,Fantasy
+Avatar ,James Cameron,2009,760505847,Sci-Fi

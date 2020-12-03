@@ -30,9 +30,22 @@ scale_fill_discrete = scale_fill_viridis_d
 
 #The data for plot
 
-radarplot_data <- read_csv("shiny_radar.csv")
-animation_data <- read_csv("shiny_animation.csv")
-circulation_data = read_csv("shiny_circulate.csv")
+radarplot_data <- read_csv("./Dataset/shiny_radar.csv")
+animation_data <- read_csv("./Dataset/shiny_animation.csv")
+circulation_data <- read_csv("./Dataset/shiny_circulation.csv")
+wordcloud_data = read_csv("./Dataset/shiny_keyword.csv")
+#The data for dfs
+
+radarplot_df <- read_csv("./Dataset/shiny_radar_df.csv")
+
+
+
+#################################
+##     Functions for plot:     ##
+#################################
+
+
+## 1. Radar
 
 name_list_radar_right <- c("movie_title","genres",
                            "director_facebook_likes","actor_3_facebook_likes",
@@ -43,9 +56,8 @@ name_list_radar_left <- c("movie_title","genres","num_critic_for_reviews",
                           "duration","num_voted_users", "facenumber_in_poster","num_user_for_reviews","budget"
                           ,"imdb_score")
 
-#Functions for plot:
 
-## 1. Radar
+
 selectdata <- function(Genres, Varlist, Tibble){
   value_vector <- 
     Tibble %>% 
@@ -128,7 +140,7 @@ plot_circulate <- function(Genrelist_Circulate)
 {
   data <-
     circulation_data %>% 
-    filter(genres %in% Genrelist_Circulate)
+    filter(genres %in% Genrelist_Circulate) 
   data = data %>% arrange(genres)
   data$id = seq(1, nrow(data))
   
@@ -217,7 +229,7 @@ plot_animation_2 <- function(Genrelist_Animation_2)
   
 }
 
-## IMDb_score
+## IMDb_score  (X not use)
 
 plot_animation_IMDb <- function(Genreslist_Animation){
   p <- 
@@ -237,12 +249,69 @@ plot_animation_IMDb <- function(Genreslist_Animation){
 }
 
 
-#Dataframes:
+## Wordcloud
+
+plot_wordcloud <- function(Genrelist_Wordcloud)
+{
+
+  
+  genre_list = wordcloud_data %>% 
+    select(genres) %>% 
+    mutate(genres = factor(genres)) %>% 
+    pull(., genres) %>% 
+    levels() %>% 
+    as_vector()
+  
+  imdb_new = wordcloud_data %>% 
+    filter(genres %in% Genrelist_Wordcloud) %>% 
+    select(-genres)
+  
+  wordlist =  
+    unlist(imdb_new %>% drop_na(plot_keyword) %>% pull(plot_keyword)) %>% 
+    as_tibble()
+  
+  colnames(wordlist) = "word"
+  
+  `%nin%` = Negate(`%in%`)
+  
+  wordcloud_df =
+    wordlist %>%
+    filter(word %nin% genre_list) %>% 
+    group_by(word) %>% 
+    summarise(freq = n()) %>% 
+    arrange(desc(freq))
+  
+  return(wordcloud_df)
+}
 
 
-out_df <- function(Genrelist_df1){
+#################################
+##     Functions for dfs:      ##
+#################################
+
+## 1. Radar plot
+
+Radar_df <- function(Genrelist_Radar_df){
   output<-
-    animation_data %>% 
-    filter(genres %in% Genrelist_df1)
+    radarplot_df %>% 
+    filter(genres %in% Genrelist_Radar_df) %>% 
+    column_to_rownames("genres") %>%
+    t() %>% 
+    as.data.frame() %>% 
+    rownames_to_column("Variable") %>% 
+    as_tibble()
   return(output)
 }
+
+Circulation_df <- function(Genrelist_cir_df){
+  output <-
+    circulation_data %>% 
+    filter(genres %in% Genrelist_cir_df) %>% 
+    select(movie_title, director_name, gross) %>% 
+    arrange(-gross) %>% 
+    distinct(movie_title, .keep_all = T)
+  
+  return(output)
+}
+
+

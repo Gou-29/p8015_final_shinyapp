@@ -44,15 +44,17 @@ dashboardPage(
     fluidRow(
       tabBox(id = "tab", width = 12,
              tabPanel("Radar plot",
-                      fluidRow(
+                      fluidRow( 
                         column(6, plotlyOutput("plot1")),
-                        column(6, plotlyOutput("plot2")),
-                      box(title = "Test df",
-                            solidHeader = T,
-                            width = 12,
-                            collapsible = T,
-                            div(DT::DTOutput("test_df"), style = "font-size: 100%;")),
-                      )
+                        column(6, plotlyOutput("plot2"))),
+                      fluidRow(
+                        column(12, 
+                        box(title = "Data in actual scale:",
+                                    solidHeader = T,
+                                    width = 12,
+                                    collapsible = T,
+                                    div(DT::DTOutput("test_df"), style = "font-size: 100%;"))))
+
              ),
              tabPanel("Animation plot",
                       fluidRow(
@@ -60,11 +62,28 @@ dashboardPage(
                         column(6, imageOutput("plot4")),
                       )
              ),
-             tabPanel("Circulation",
-                      imageOutput("plot5", width = 1200, height = 800)
+             tabPanel("Circulation plot",
+                      fluidRow(
+                        column(8, imageOutput("plot5", height = 800)), 
+                        column(4, 
+                               box(title = "Top Movies in history:",
+                                   solidHeader = T,
+                                   width = 12,
+                                   collapsible = T,
+                                   div(DT::DTOutput("test_df_2"), style = "font-size: 100%;")))
+                               )
+                      
              ),
              tabPanel("Circulation 2",
                       plotlyOutput("plot6", width = 1200, height = 800)
+             ),
+             tabPanel("TOP plots",
+                      fluidRow(
+                        column(2),
+                        column(8,wordcloud2Output('wordcloud2', width = 800, height = 600)),
+                        column(2)
+                      )
+                      
              )
       )
     )

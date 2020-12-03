@@ -5,9 +5,9 @@ account: gou29
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 3322671
-bundleId: 3926517
+bundleId: 3936995
 url: https://gou29.shinyapps.io/IMDb_Explore/
-when: 1606807952.9509
+when: 1606980390.94842
 asMultiple: FALSE
 asStatic: FALSE
 ignoredFiles: README.md|trend_animation.R|Dataset/Clean_for_visulization.R|Dataset/imdb_explore_clean.csv|Dataset/plottemp.R
