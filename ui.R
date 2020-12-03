@@ -47,6 +47,11 @@ dashboardPage(
                       fluidRow(
                         column(6, plotlyOutput("plot1")),
                         column(6, plotlyOutput("plot2")),
+                      box(title = "Test df",
+                            solidHeader = T,
+                            width = 12,
+                            collapsible = T,
+                            div(DT::DTOutput("test_df"), style = "font-size: 100%;")),
                       )
              ),
              tabPanel("Animation plot",

@@ -14,6 +14,7 @@ library(gganimate)
 library(gifski)
 library(viridis)
 library(lazyeval)
+library(DT)
 
 # Global setting for plot:
 
@@ -40,7 +41,7 @@ name_list_radar_right <- c("movie_title","genres",
 
 name_list_radar_left <- c("movie_title","genres","num_critic_for_reviews",
                           "duration","num_voted_users", "facenumber_in_poster","num_user_for_reviews","budget"
-                          ,"imdb_score","aspect_ratio")
+                          ,"imdb_score")
 
 #Functions for plot:
 
@@ -105,21 +106,23 @@ plot_animation_year <- function(Genreslist_Animation){
     drop_na(year) %>% 
     filter(genres %in% Genreslist_Animation) %>% 
     group_by(genres, year) %>%
-    summarize(mean_gross = mean(gross)) %>%
+    summarize(mean_gross = mean(gross)) %>% 
+    filter(year > 1990) %>% 
+    as_tibble() %>% 
     ggplot(aes(x = as.factor(year), y = mean_gross, group = genres)) + 
     geom_line(aes(color = genres), size = 1) + 
     geom_point(aes(color = genres), size = 2) + 
     labs(title = "Trends of mean_gross by genres over years",
          x = "Year", 
          y = "Mean Gross") +
-    theme(axis.text.x = element_text(angle = 45)) 
+    scale_x_discrete(name ="Year",labels = c("1927" = "", "1928" = "")) +
+    theme(axis.text.x = element_text(angle = 45))
   p <- p + transition_reveal(year)
   return(p)
 }
 
 
 ## 3. Circular plot
-
 
 plot_circulate <- function(Genrelist_Circulate)
 {
@@ -231,4 +234,15 @@ plot_animation_IMDb <- function(Genreslist_Animation){
     labs(x = "IMDb Score", y = "Mean Gross")
   p + transition_time(as.integer(year)) + labs(title = "Year: {frame_time}") + shadow_wake(wake_length = 0.1, alpha = FALSE)
   return(p)
+}
+
+
+#Dataframes:
+
+
+out_df <- function(Genrelist_df1){
+  output<-
+    animation_data %>% 
+    filter(genres %in% Genrelist_df1)
+  return(output)
 }

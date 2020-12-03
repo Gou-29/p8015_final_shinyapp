@@ -77,5 +77,10 @@ shinyServer(
              "Calories", icon = icon("fire"), color = "yellow")
   })
   
+  
+  output$test_df <- DT::renderDataTable(out_df(input$GenreList))
+  
   }
 )
+
+
