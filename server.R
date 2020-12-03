@@ -77,6 +77,10 @@ shinyServer(
              "Calories", icon = icon("fire"), color = "yellow")
   })
   
+  output$wordcloud2 <- renderWordcloud2({
+    wordcloud2(plot_wordcloud(input$GenreList), backgroundColor = "white")
+  })
+  
   
   output$test_df <- DT::renderDataTable(out_df(input$GenreList))
   

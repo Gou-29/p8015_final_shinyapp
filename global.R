@@ -246,3 +246,38 @@ out_df <- function(Genrelist_df1){
     filter(genres %in% Genrelist_df1)
   return(output)
 }
+
+## Word cloud
+
+plot_wordcloud <- function(Genrelist_Wordcloud)
+{
+  imdb_raw = read_csv("genre_keyword.csv")
+
+  genre_list = imdb_raw %>% 
+    select(genres) %>% 
+    mutate(genres = factor(genres)) %>% 
+    pull(., genres) %>% 
+    levels() %>% 
+    as_vector()
+
+  imdb_new = imdb_raw %>% 
+    filter(genres %in% Genrelist_Wordcloud) %>% 
+    select(-genres)
+
+  wordlist =  
+    unlist(imdb_new %>% drop_na(plot_keyword) %>% pull(plot_keyword)) %>% 
+    as_tibble()
+
+  colnames(wordlist) = "word"
+
+  `%nin%` = Negate(`%in%`)
+
+  wordcloud_df =
+    wordlist %>%
+    filter(word %nin% genre_list) %>% 
+    group_by(word) %>% 
+    summarise(freq = n()) %>% 
+    arrange(desc(freq))
+
+  return(wordcloud_df)
+}

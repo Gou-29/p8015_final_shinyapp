@@ -65,6 +65,9 @@ dashboardPage(
              ),
              tabPanel("Circulation 2",
                       plotlyOutput("plot6", width = 1200, height = 800)
+             ),
+             tabPanel("TOP plots",
+                      wordcloud2Output('wordcloud2', width = 1200, height = 800)
              )
       )
     )
