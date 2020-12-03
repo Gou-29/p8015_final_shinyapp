@@ -102,18 +102,18 @@ plot_animation_month <- function(Genreslist_Animation){
 plot_animation_year <- function(Genreslist_Animation){
   p <- 
     animation_data %>%  
-    drop_na(month) %>% 
+    drop_na(year) %>% 
     filter(genres %in% Genreslist_Animation) %>% 
-    group_by(genres, month) %>%
+    group_by(genres, year) %>%
     summarize(mean_gross = mean(gross)) %>%
-    ggplot(aes(x = as.factor(month), y = mean_gross, group = genres)) + 
+    ggplot(aes(x = as.factor(year), y = mean_gross, group = genres)) + 
     geom_line(aes(color = genres), size = 1) + 
     geom_point(aes(color = genres), size = 2) + 
-    labs(title = "Trends of mean_gross by genres over months",
-         x = "Month", 
+    labs(title = "Trends of mean_gross by genres over years",
+         x = "Year", 
          y = "Mean Gross") +
     theme(axis.text.x = element_text(angle = 45)) 
-  p<- p + transition_reveal(month)
+  p <- p + transition_reveal(year)
   return(p)
 }
 
@@ -212,4 +212,23 @@ plot_animation_2 <- function(Genrelist_Animation_2)
   
   return(p)
   
+}
+
+## IMDb_score
+
+plot_animation_IMDb <- function(Genreslist_Animation){
+  p <- 
+    animation_data %>%  
+    drop_na(year,month,imdb_score) %>%
+    mutate(year = as.numeric(year)) %>% 
+    filter(genres %in% Genreslist_Animation, year > 1980) %>% 
+    group_by(year, genres, imdb_score) %>%
+    summarize(mean_gross = mean(gross)) %>%
+    ggplot(aes(x = imdb_score, y = mean_gross, group = genres)) + 
+    geom_point(aes(color = genres), show.legend = FALSE, alpha = 0.7) +
+    scale_color_viridis_d() +
+    scale_size(range = c(2, 12)) +
+    labs(x = "IMDb Score", y = "Mean Gross")
+  p + transition_time(as.integer(year)) + labs(title = "Year: {frame_time}") + shadow_wake(wake_length = 0.1, alpha = FALSE)
+  return(p)
 }
