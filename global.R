@@ -81,7 +81,25 @@ plot_radar <- function(Genreslist_Radar, plot_Varlist){
 
 ## 2. Animation plot
 
-plot_animation <- function(Genreslist_Animation){
+plot_animation_month <- function(Genreslist_Animation){
+  p <- 
+    animation_data %>%  
+    drop_na(month) %>% 
+    filter(genres %in% Genreslist_Animation) %>% 
+    group_by(genres, month) %>%
+    summarize(mean_gross = mean(gross)) %>%
+    ggplot(aes(x = as.factor(month), y = mean_gross, group = genres)) + 
+    geom_line(aes(color = genres), size = 1) + 
+    geom_point(aes(color = genres), size = 2) + 
+    labs(title = "Trends of mean_gross by genres over months",
+         x = "Month", 
+         y = "Mean Gross") +
+    theme(axis.text.x = element_text(angle = 45)) 
+  p<- p + transition_reveal(month)
+  return(p)
+}
+
+plot_animation_year <- function(Genreslist_Animation){
   p <- 
     animation_data %>%  
     drop_na(month) %>% 

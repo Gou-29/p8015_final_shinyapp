@@ -2,7 +2,7 @@
 
 dashboardPage(
   dashboardHeader(
-    title = "CRAN whales"
+    title = "IMDb"
   ),
   dashboardSidebar(
     checkboxGroupInput(inputId = "GenreList",
@@ -26,7 +26,6 @@ dashboardPage(
                                    "News" = "News",
                                    "Romance" = "Romance",
                                    "Sci-Fi" = "Sci-Fi",
-                                   "Short" = "Short",
                                    "Sport" = "Sport",
                                    "Thriller" = "Thriller",
                                    "War" = "War",
@@ -38,6 +37,11 @@ dashboardPage(
   ),
   dashboardBody(
     fluidRow(
+      valueBoxOutput("A"),
+      valueBoxOutput("B"),
+      valueBoxOutput("C")
+    ),
+    fluidRow(
       tabBox(id = "tab", width = 12,
              tabPanel("Radar plot",
                       fluidRow(
@@ -46,13 +50,16 @@ dashboardPage(
                       )
              ),
              tabPanel("Animation plot",
-                      imageOutput("plot3", width = 800, height = 500)
+                      fluidRow(
+                        column(6, imageOutput("plot3")),
+                        column(6, imageOutput("plot4")),
+                      )
              ),
              tabPanel("Circulation",
-                      imageOutput("plot4", width = 1200, height = 800)
+                      imageOutput("plot5", width = 1200, height = 800)
              ),
              tabPanel("Circulation 2",
-                      plotlyOutput("plot5", width = 1200, height = 800)
+                      plotlyOutput("plot6", width = 1200, height = 800)
              )
       )
     )
