@@ -32,8 +32,7 @@ dashboardPage(
                        inline = TRUE,
                        selected = c("Action","Sci-Fi")
     )
-    #,
-    #submitButton("Update filters")
+    #,submitButton("update","Update filters")
   ),
   dashboardBody(
     fluidRow(
@@ -60,8 +59,11 @@ dashboardPage(
              ),
              tabPanel("Animation plot",
                       fluidRow(
-                        column(6, imageOutput("plot3")),
-                        column(6, imageOutput("plot4")),
+                        column(1),
+                        actionButton("update", "upadte_plot")),
+                      fluidRow(
+                        column(6, plotOutput("plot3")),
+                        column(6, imageOutput("plot4"))
                       )
              ),
              tabPanel("Circulation plot",

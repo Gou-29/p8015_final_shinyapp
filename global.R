@@ -94,6 +94,9 @@ plot_radar <- function(Genreslist_Radar, plot_Varlist){
 ## 2. Animation plot
 
 plot_animation_month <- function(Genreslist_Animation){
+  
+  if(length(Genreslist_Animation)==0) return()
+  
   p <- 
     animation_data %>%  
     drop_na(month) %>% 
@@ -112,6 +115,9 @@ plot_animation_month <- function(Genreslist_Animation){
 }
 
 plot_animation_year <- function(Genreslist_Animation){
+  
+  if(length(Genreslist_Animation)==0) return()
+  
   p <- 
     animation_data %>%  
     drop_na(year) %>% 

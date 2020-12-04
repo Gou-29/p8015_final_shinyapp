@@ -4,26 +4,40 @@
 shinyServer(
   function(input, output, session) {
 
-###Plots: 
+  i <- reactiveValues(data = 0)
+  
+  observeEvent(input$update,
+               {
+                 i$data = i$data +1
+               })
+  
+  
+  
   observe({
     if(input$tab == "Animation plot"){
-      #showNotification("Warning", type= "warning")
-      showModal(modalDialog(
-        title = "Important message",
-        "This is an important message!",
-        easyClose = TRUE
-      ))
-    }
-    
-    })
-    
-    
-    
+      if(i$data == 0 )
+        {
+        showModal(modalDialog(
+          title = "Important message",
+          "This is an important message!",
+          easyClose = T))
+        }
       
-  output$tabset1Selected <- renderText({
-      input$tab
-  })   
- 
+    }
+  })
+  
+  
+  
+    
+  output$tabset1Selected <- renderText({i$data})
+  v_animation <- eventReactive(input$update,
+                {
+                  
+                  return(c(input$GenreList))
+                })
+    
+    
+###Plots: 
     
   output$plot1 <- renderPlotly({ 
     
@@ -37,12 +51,18 @@ shinyServer(
     
     plot_radar(input$GenreList, name_list_radar_right)})
   
+
+                               
+
+    
   output$plot3 <- renderImage({ 
     
     
+    validate(need(length(input$GenreList) > 0, "Please select"))
+    
     outfile <- tempfile(fileext='.gif')
     
-    p <- animate(plot_animation_month(input$GenreList), 
+    p <- animate(plot_animation_month(v_animation()), 
                  renderer = gifski_renderer(),
                  nframes = 30, fps=8, duration=5)
     
@@ -53,13 +73,19 @@ shinyServer(
          width = 450,
          height = 400
          # alt = "This is alternate text"
-    )},deleteFile = TRUE)
+    )
+    
+  },deleteFile = TRUE) 
+  
   
   output$plot4 <- renderImage({ 
     
+
+    validate(need(length(input$GenreList) > 0, "Please select"))
+    
     outfile <- tempfile(fileext='.gif')
     
-    p <- animate(plot_animation_year(input$GenreList), 
+    p <- animate(plot_animation_year(v_animation()), 
                  renderer = gifski_renderer(),
                  nframes = 30, fps=8, duration=5)
     
@@ -70,8 +96,11 @@ shinyServer(
          width = 450,
          height = 400
          # alt = "This is alternate text"
-    )},deleteFile = TRUE)
+    )},deleteFile = TRUE) 
+  
 
+                               
+  
   output$plot5 <- renderPlot({ 
     
     validate(need(length(input$GenreList) > 0, "please select"))
