@@ -82,6 +82,29 @@ dashboardPage(
              ),
              tabPanel("Gross vs. ?",
                       fluidRow(
+                        box(width = 10, 
+                        checkboxGroupInput(inputId = "varlist",
+                                           label = 'Varibale:', 
+                                           choices = c("num_critic_for_reviews" = "num_critic_for_reviews",
+                                                       "num_voted_users" = "num_voted_users",
+                                                       "num_user_for_reviews" = "num_user_for_reviews",
+                                                       "duration" = "duration",
+                                                       "imdb_score" = "imdb_score",
+                                                       "budget" = "budget",
+                                                       "facenumber_in_poster" = "facenumber_in_poster",
+                                                       "director_facebook_likes" = "director_facebook_likes",
+                                                       "actor_1_facebook_likes" = "actor_1_facebook_likes",
+                                                       "actor_2_facebook_likes" = "actor_2_facebook_likes",
+                                                       "actor_3_facebook_likes" = "actor_3_facebook_likes",
+                                                       "movie_facebook_likes" = "movie_facebook_likes"
+                                                       ), 
+                                           inline = TRUE,
+                                           selected = c("num_critic_for_reviews","director_facebook_likes")
+                        ),
+                        submitButton("Update filters"))
+                      ),
+                      
+                      fluidRow(
                         column(6, plotlyOutput("plot6", width = 400, height = 400)),
                         column(6, plotlyOutput("plot7", width = 400, height = 400))
                       ),

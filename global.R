@@ -189,6 +189,8 @@ plot_circulate <- function(Genrelist_Circulate)
 
 plot_grossplus <- function(Genrelist_Animation_2, selected_var)
 {
+  if(is.na(selected_var)) return()
+  
   p <- 
     plotly_df %>% 
     filter(genres %in% Genrelist_Animation_2, title_year > 1980, imdb_score > 3) %>% 
@@ -200,7 +202,8 @@ plot_grossplus <- function(Genrelist_Animation_2, selected_var)
   
   gg <- ggplot(p, aes_string(x = selected_var, y = 'gross', color = 'genres')) +
     geom_point(aes(frame = genres, ids = movie_title)) +
-    theme(legend.position = "none")
+    theme(legend.position = "none") +
+    geom_smooth(aes(frame = genres), method = "lm", se= F)
   ggplotly(gg)
   
   

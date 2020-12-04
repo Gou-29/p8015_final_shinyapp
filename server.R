@@ -98,25 +98,43 @@ shinyServer(
     
     validate(need(length(input$GenreList) > 0, "please select"))
     
-    plot_grossplus(input$GenreList, 'num_critic_for_reviews')})
+    progress <- shiny::Progress$new(max = 40)
+    progress$set(message = "Rendering", value = 0)
+    on.exit(progress$close())
+    
+    plot_grossplus(input$GenreList, input$varlist[1])
+    
+    })
   
   output$plot7 <- renderPlotly({ 
     
     validate(need(length(input$GenreList) > 0, "please select"))
     
-    plot_grossplus(input$GenreList,'movie_facebook_likes')})
+    progress <- shiny::Progress$new(max = 40)
+    progress$set(message = "Rendering", value = 0)
+    on.exit(progress$close())
+    
+    plot_grossplus(input$GenreList,input$varlist[2])})
   
   output$plot8 <- renderPlotly({ 
     
     validate(need(length(input$GenreList) > 0, "please select"))
     
-    plot_grossplus(input$GenreList,'num_voted_users')})
+    progress <- shiny::Progress$new(max = 40)
+    progress$set(message = "Rendering", value = 0)
+    on.exit(progress$close())
+    
+    plot_grossplus(input$GenreList,input$varlist[3])})
   
   output$plot9 <- renderPlotly({ 
     
     validate(need(length(input$GenreList) > 0, "please select"))
     
-    plot_grossplus(input$GenreList,'imdb_score')})
+    progress <- shiny::Progress$new(max = 40)
+    progress$set(message = "Rendering", value = 0)
+    on.exit(progress$close())
+    
+    plot_grossplus(input$GenreList,input$varlist[4])})
   
   output$wordcloud2 <- renderWordcloud2({
     wordcloud2(plot_wordcloud(input$GenreList), backgroundColor = "white")
