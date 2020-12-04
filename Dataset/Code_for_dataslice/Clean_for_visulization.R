@@ -5,7 +5,7 @@ library(xml2)
 library(rvest)
 ### Import data
 
-imdb_raw = read_csv("./movie_metadata.csv")
+imdb_raw = read_csv("./Dataset/movie_metadata.csv")
 
 
 
@@ -47,8 +47,10 @@ imdb_clean =
                names_to = "dummy",
                values_to = "plot_keyword") %>%
   select(-dummy) %>% 
-  drop_na(plot_keyword) %>% 
-  write_csv(.,"./imdb_explore_clean.csv")
+  drop_na(plot_keyword)
+
+  
+write.csv(imdb_clean,"./Dataset/imdb_explore_clean.csv", fileEncoding = "utf-8")
 
   
 

@@ -4,39 +4,6 @@
 shinyServer(
   function(input, output) {
 
-  #i <- reactiveValues(data = 0)
-  #
-  #observeEvent(input$update,
-  #             {
-  #               i$data = i$data +1
-  #             })
-  #
-  #
-  #
-  #observe({
-  #  if(input$tab == "Animation plot"){
-  #    if(i$data == 0 )
-  #      {
-  #      showModal(modalDialog(
-  #        title = "Important message",
-  #        "This is an important message!",
-  #        easyClose = T))
-  #      }
-  #    
-  #  }
-  #})
-  #
-  #
-  #
-  #  
-  #output$tabset1Selected <- renderText({i$data})
-  #v_animation <- eventReactive(input$update,
-  #              {
-  #                
-  #                return(c(input$GenreList))
-  #              })
-    
-    
 ###Plots: 
     
   output$plot1 <- renderPlotly({ 
@@ -57,8 +24,9 @@ shinyServer(
     
   output$plot3 <- renderImage({ 
     
+    validate(need(length(input$GenreList) > 0, "please select"))
     
-    progress <- shiny::Progress$new(max = 100)
+    progress <- shiny::Progress$new(max = 40)
     progress$set(message = "Rendering", value = 0)
     on.exit(progress$close())
     
@@ -71,14 +39,14 @@ shinyServer(
     
     p <- animate(plot_animation_month(input$GenreList), 
                  renderer = gifski_renderer(),
-                 nframes = 30, fps=8, duration=5,
+                 nframes = 30, fps = 8, duration=5,
                  update_progress = updateShinyProgress)
     
     anim_save("outfile1.gif", animation = p)
     
     list(src = "outfile1.gif",
          contentType = 'image/gif',
-         width = 450,
+         width = 400,
          height = 400
          # alt = "This is alternate text"
     )
@@ -88,7 +56,9 @@ shinyServer(
   
   output$plot4 <- renderImage({ 
     
-    progress <- shiny::Progress$new(max = 100)
+    validate(need(length(input$GenreList) > 0, "please select"))
+    
+    progress <- shiny::Progress$new(max = 40)
     progress$set(message = "Rendering", value = 0)
     on.exit(progress$close())
     
@@ -100,14 +70,14 @@ shinyServer(
     
     p <- animate(plot_animation_year(input$GenreList), 
                  renderer = gifski_renderer(),
-                 nframes = 30, fps=8, duration=5,
+                 nframes = 30, fps = 8, duration=5,
                  update_progress = updateShinyProgress)
     
     anim_save("outfile2.gif", animation = p)
     
     list(src = "outfile2.gif",
          contentType = 'image/gif',
-         width = 450,
+         width = 400,
          height = 400
          # alt = "This is alternate text"
     )},deleteFile = TRUE) 
@@ -120,12 +90,33 @@ shinyServer(
     validate(need(length(input$GenreList) > 0, "please select"))
     
     plot_circulate(input$GenreList)})
+ 
   
+  
+   
   output$plot6 <- renderPlotly({ 
     
     validate(need(length(input$GenreList) > 0, "please select"))
     
-    plot_animation_2(input$GenreList)})
+    plot_grossplus(input$GenreList, 'num_critic_for_reviews')})
+  
+  output$plot7 <- renderPlotly({ 
+    
+    validate(need(length(input$GenreList) > 0, "please select"))
+    
+    plot_grossplus(input$GenreList,'movie_facebook_likes')})
+  
+  output$plot8 <- renderPlotly({ 
+    
+    validate(need(length(input$GenreList) > 0, "please select"))
+    
+    plot_grossplus(input$GenreList,'num_voted_users')})
+  
+  output$plot9 <- renderPlotly({ 
+    
+    validate(need(length(input$GenreList) > 0, "please select"))
+    
+    plot_grossplus(input$GenreList,'imdb_score')})
   
   output$wordcloud2 <- renderWordcloud2({
     wordcloud2(plot_wordcloud(input$GenreList), backgroundColor = "white")

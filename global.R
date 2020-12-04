@@ -17,6 +17,7 @@ library(lazyeval)
 library(DT)
 library(scales)
 library(prettyunits)
+library(png)
 
 # Global setting for plot:
 
@@ -56,7 +57,7 @@ name_list_radar_right <- c("movie_title","genres",
                            "actor_2_facebook_likes","actor_1_facebook_likes",
                            "movie_facebook_likes")
 
-name_list_radar_left <- c("movie_title","genres","num_critic_for_reviews",
+name_list_radar_left <- c("movie_title","genres","N","num_critic_for_reviews","gross",
                           "duration","num_voted_users", "facenumber_in_poster","num_user_for_reviews","budget"
                           ,"imdb_score")
 
@@ -144,60 +145,6 @@ plot_animation_year <- function(Genreslist_Animation){
 }
 
 
-## the plotly substitute for animation 1
-#accumulate_by <- function(dat, var) {
-#  var <- lazyeval::f_eval(var, dat)
-#  lvls <- plotly:::getLevels(var)
-#  dats <- lapply(seq_along(lvls), function(x) {
-#    cbind(dat[var %in% lvls[seq(1, x)], ], frame = lvls[[x]])
-#  })
-#  dplyr::bind_rows(dats)
-#}
-#
-#p <- 
-#  animation_data %>%  
-#  drop_na(month) %>% 
-#  filter(genres %in% Genrelist_Animation_2) %>% 
-#  group_by(genres, month) %>%
-#  summarize(mean_gross = mean(gross))
-#
-#p <- p %>% accumulate_by( ~ month)
-#
-#p <- p %>%
-#  plot_ly(
-#    x = ~month, 
-#    y = ~mean_gross,
-#    split = ~ genres,
-#    frame = ~frame, 
-#    type = 'scatter',
-#    mode = 'lines + markers', 
-#    line = list(simplyfy = F),
-#    marker = list(size = 10)
-#  )
-#p <- p %>% layout(
-#  xaxis = list(
-#    title = "Month",
-#    zeroline = F
-#  ),
-#  yaxis = list(
-#    title = "Mean_Gross",
-#    zeroline = F
-#  )
-#) 
-#p <- p %>% animation_opts(
-#  frame = 100, 
-#  transition = 0, 
-#  redraw = FALSE
-#)
-#p <- p %>% animation_slider(
-#  hide = T
-#)
-#p <- p %>% animation_button(
-#  x = 1, xanchor = "right", y = 0, yanchor = "bottom"
-#)
-#
-#return(p)
-
 
 
 ## 3. Circular plot
@@ -219,10 +166,10 @@ plot_circulate <- function(Genrelist_Circulate)
   fplot = 
     ggplot(data, aes(x=as.factor(id), y=gross, fill=genres)) +   
     geom_bar(aes(x=as.factor(id), y=gross, fill=genres), stat="identity", alpha=0.5) +
-    ylim(-500000000, max(data$gross)) +
+    ylim(-200000000, max(data$gross)) +
     theme_minimal() +
     theme(
-      #legend.position = "right",
+      legend.position = c(.85,.85),
       axis.text = element_blank(),
       axis.title = element_blank(),
       panel.grid = element_blank(),
@@ -240,76 +187,26 @@ plot_circulate <- function(Genrelist_Circulate)
 
 ## 4. Gross vs. IMDb_score (the marker size represents the budget level):
 
-plot_animation_2 <- function(Genrelist_Animation_2)
+plot_grossplus <- function(Genrelist_Animation_2, selected_var)
 {
   p <- 
     plotly_df %>% 
     filter(genres %in% Genrelist_Animation_2, title_year > 1980, imdb_score > 3) %>% 
-    mutate(genres = factor(genres))
+    mutate(genres = as.factor(genres)) 
   
-  p <- p %>%
-    plot_ly(
-      x = ~imdb_score, 
-      y = ~gross, 
-      size = ~budget,
-      color = ~genres,
-      #colors = brewer.pal(nlevels(pull(df1,genres)),
-      #"Paired"),
-      frame = ~title_year, 
-      text = ~movie_title, 
-      hoverinfo = "text",
-      type = 'scatter',
-      mode = 'markers'
-    )
+  #namelist <- names(p)
+  
+  #var <- namelist[namelist == selected_var]
+  
+  gg <- ggplot(p, aes_string(x = selected_var, y = 'gross', color = 'genres')) +
+    geom_point(aes(frame = genres, ids = movie_title)) +
+    theme(legend.position = "none")
+  ggplotly(gg)
   
   
-  p <- p %>% animation_opts(
-    1000, easing = "elastic", redraw = FALSE
-  )
-  
-  return(p)
+  return(gg)
   
 }
-
-## IMDb_score Draft
-
-#plot_animation_IMDb <- function(Genreslist_Animation){
-#  p <- 
-#    animation_data %>%  
-#    drop_na(year,month,imdb_score) %>%
-#    mutate(year = as.numeric(year)) %>% 
-#    filter(genres %in% Genreslist_Animation, year > 1980) %>% 
-#    group_by(year, genres, imdb_score) %>%
-#    summarize(mean_gross = mean(gross)) %>%
-#    ggplot(aes(x = imdb_score, y = mean_gross, group = genres)) + 
-#    geom_point(aes(color = genres), show.legend = FALSE, alpha = 0.7) +
-#    scale_color_viridis_d() +
-#    scale_size(range = c(2, 12)) +
-#    labs(x = "IMDb Score", y = "Mean Gross")
-#  p + transition_time(as.integer(year)) + labs(title = "Year: {frame_time}") + shadow_wake(wake_length = 0.1, alpha = FALSE)
-#  return(p)
-#}
-
-
-## IMDb_score  (X not use)
-
-plot_animation_IMDb <- function(Genreslist_Animation){
-  p <- 
-    animation_data %>%  
-    drop_na(year,month,imdb_score) %>%
-    mutate(year = as.numeric(year)) %>% 
-    filter(genres %in% Genreslist_Animation, year > 1980) %>% 
-    group_by(year, genres, imdb_score) %>%
-    summarize(mean_gross = mean(gross)) %>%
-    ggplot(aes(x = imdb_score, y = mean_gross, group = genres)) + 
-    geom_point(aes(color = genres), show.legend = FALSE, alpha = 0.7) +
-    scale_color_viridis_d() +
-    scale_size(range = c(2, 12)) +
-    labs(x = "IMDb Score", y = "Mean Gross")
-  p + transition_time(as.integer(year)) + labs(title = "Year: {frame_time}") + shadow_wake(wake_length = 0.1, alpha = FALSE)
-  return(p)
-}
-
 
 ## Wordcloud
 

@@ -9,7 +9,7 @@ imdb_vis <- read_csv("./Dataset/imdb_explore_clean.csv")
 
 imdb_radar <-
   imdb_vis %>% 
-  select(movie_title,genres, num_critic_for_reviews,duration,director_facebook_likes,
+  select(movie_title,genres, gross, num_critic_for_reviews,duration,director_facebook_likes,
          actor_3_facebook_likes,actor_2_facebook_likes,actor_1_facebook_likes,
          num_voted_users, facenumber_in_poster, num_user_for_reviews,
          budget, imdb_score, aspect_ratio, movie_facebook_likes) %>% 
@@ -78,8 +78,9 @@ names(imdb_radar) = c("genres","N", name_list_radar[3:length(name_list_radar)])
 imdb_radar <-
   imdb_radar %>% 
   as_tibble() %>% 
-  select(-N) %>% 
-  pivot_longer(num_critic_for_reviews:movie_facebook_likes,
+  #select(N) %>% 
+  mutate(N = (N - min(N))/(max(N)-min(N))) %>% 
+  pivot_longer(N:movie_facebook_likes,
                names_to = "variable",
                values_to = "value")
 

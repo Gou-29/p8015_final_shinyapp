@@ -1,4 +1,6 @@
 genres,variable,value
+Action,N,0.4564796905222437
+Action,gross,0.703919145869317
 Action,num_critic_for_reviews,0.8587693851232094
 Action,duration,0.7498382025918258
 Action,director_facebook_likes,0.528776478445857
@@ -12,6 +14,8 @@ Action,budget,0.6528651612892387
 Action,imdb_score,0.20819958111296677
 Action,aspect_ratio,1
 Action,movie_facebook_likes,0.6760727747430404
+Adventure,N,0.3757253384912959
+Adventure,gross,0.9028314478331124
 Adventure,num_critic_for_reviews,0.8927078457317336
 Adventure,duration,0.7518336375942277
 Adventure,director_facebook_likes,0.5172584566001774
@@ -25,6 +29,8 @@ Adventure,budget,0.78247195742419
 Adventure,imdb_score,0.3028969532582672
 Adventure,aspect_ratio,0.9307224825032234
 Adventure,movie_facebook_likes,0.838768533770777
+Animation,N,0.09671179883945841
+Animation,gross,1
 Animation,num_critic_for_reviews,0.7614924511368155
 Animation,duration,0.5282524575191675
 Animation,director_facebook_likes,0.21856290756242777
@@ -38,6 +44,8 @@ Animation,budget,1
 Animation,imdb_score,0.4343301388547599
 Animation,aspect_ratio,0.7317999320352914
 Animation,movie_facebook_likes,0.48207206365451843
+Biography,N,0.12427466150870406
+Biography,gross,0.32150851994117835
 Biography,num_critic_for_reviews,0.7825538477820301
 Biography,duration,0.8725074585876743
 Biography,director_facebook_likes,1
@@ -51,6 +59,8 @@ Biography,budget,0.24490590946884955
 Biography,imdb_score,0.6961240310077518
 Biography,aspect_ratio,0.9057769071904634
 Biography,movie_facebook_likes,0.7061514318823658
+Comedy,N,0.7712765957446809
+Comedy,gross,0.44634087058146044
 Comedy,num_critic_for_reviews,0.559361001800466
 Comedy,duration,0.6271150904636793
 Comedy,director_facebook_likes,0.29135053973093183
@@ -64,6 +74,8 @@ Comedy,budget,0.37552425284405566
 Comedy,imdb_score,0.1532029788142509
 Comedy,aspect_ratio,0.7775196367194152
 Comedy,movie_facebook_likes,0.31796196065243276
+Crime,N,0.35735009671179885
+Crime,gross,0.34759927205327484
 Crime,num_critic_for_reviews,0.6764401045330632
 Crime,duration,0.7306077978902595
 Crime,director_facebook_likes,0.6504308266663718
@@ -77,6 +89,8 @@ Crime,budget,0.3397363658668782
 Crime,imdb_score,0.356816343902958
 Crime,aspect_ratio,0.9103502006961702
 Crime,movie_facebook_likes,0.41881163258151943
+Documentary,N,0.04013539651837524
+Documentary,gross,0.12280392372210434
 Documentary,num_critic_for_reviews,0.3731489476057882
 Documentary,duration,0.5946361475346983
 Documentary,director_facebook_likes,0.3423873949828691
@@ -90,6 +104,8 @@ Documentary,budget,0.045713240010566085
 Documentary,imdb_score,0.6933428775948459
 Documentary,aspect_ratio,0.7825291142472371
 Documentary,movie_facebook_likes,0.19644004097257645
+Drama,N,1
+Drama,gross,0.3196214313503637
 Drama,num_critic_for_reviews,0.6794833089220425
 Drama,duration,0.7724533338316871
 Drama,director_facebook_likes,0.5707205059047994
@@ -103,6 +119,8 @@ Drama,budget,0.3602718488544603
 Drama,imdb_score,0.4858852758085147
 Drama,aspect_ratio,0.8736048782936043
 Drama,movie_facebook_likes,0.5100673079654645
+Family,N,0.22098646034816247
+Family,gross,0.8236795574262028
 Family,num_critic_for_reviews,0.6096405123835875
 Family,duration,0.6026088362902489
 Family,director_facebook_likes,0.29677196412442425
@@ -116,6 +134,8 @@ Family,budget,0.6321392793073211
 Family,imdb_score,0.16248480055515102
 Family,aspect_ratio,0.7687714749600394
 Family,movie_facebook_likes,0.3605978574887148
+Fantasy,N,0.2437137330754352
+Fantasy,gross,0.7865598913536078
 Fantasy,num_critic_for_reviews,0.8201713137480948
 Fantasy,duration,0.6747928126145948
 Fantasy,director_facebook_likes,0.4103181659562816
@@ -129,6 +149,8 @@ Fantasy,budget,0.6342338594660655
 Fantasy,imdb_score,0.2044258914080384
 Fantasy,aspect_ratio,0.8464980900532896
 Fantasy,movie_facebook_likes,0.6966816777073643
+Film-Noir,N,0
+Film-Noir,gross,0
 Film-Noir,num_critic_for_reviews,0.38866279881915794
 Film-Noir,duration,0.5391304347826087
 Film-Noir,director_facebook_likes,0
@@ -142,6 +164,8 @@ Film-Noir,budget,0
 Film-Noir,imdb_score,1
 Film-Noir,aspect_ratio,0
 Film-Noir,movie_facebook_likes,0
+History,N,0.07446808510638298
+History,gross,0.34140612895494965
 History,num_critic_for_reviews,0.7589765835308764
 History,duration,1
 History,director_facebook_likes,0.8354948186730022
@@ -155,6 +179,8 @@ History,budget,0.4301264743325503
 History,imdb_score,0.6907954834091488
 History,aspect_ratio,0.977169961704659
 History,movie_facebook_likes,0.5371567476479936
+Horror,N,0.1890715667311412
+Horror,gross,0.3134355565326224
 Horror,num_critic_for_reviews,0.8589657815799512
 Horror,duration,0.6196128693023103
 Horror,director_facebook_likes,0.17290669399462646
@@ -168,6 +194,8 @@ Horror,budget,0.4867072882783722
 Horror,imdb_score,0
 Horror,aspect_ratio,0.8732772995201239
 Horror,movie_facebook_likes,0.46194857843316295
+Music,N,0.08800773694390715
+Music,gross,0.32470921399877706
 Music,num_critic_for_reviews,0.4901074123328694
 Music,duration,0.7145851482273435
 Music,director_facebook_likes,0.3817403904484667
@@ -181,6 +209,8 @@ Music,budget,0.19037783766531405
 Music,imdb_score,0.302943465896867
 Music,aspect_ratio,0.7856389491721071
 Music,movie_facebook_likes,0.28975463794849043
+Musical,N,0.051740812379110254
+Musical,gross,0.5047562416504907
 Musical,num_critic_for_reviews,0.5070821722720104
 Musical,duration,0.7068229259855668
 Musical,director_facebook_likes,0.4408495612161006
@@ -194,6 +224,8 @@ Musical,budget,0.3695411546138609
 Musical,imdb_score,0.3468225562713752
 Musical,aspect_ratio,0.7665959688691821
 Musical,movie_facebook_likes,0.32661898393959027
+Mystery,N,0.1890715667311412
+Mystery,gross,0.4217545699126016
 Mystery,num_critic_for_reviews,0.8645064427275833
 Mystery,duration,0.7285952545269316
 Mystery,director_facebook_likes,0.7262134401551613
@@ -207,6 +239,8 @@ Mystery,budget,0.32180004576523286
 Mystery,imdb_score,0.31982820329277
 Mystery,aspect_ratio,0.9501421094941797
 Mystery,movie_facebook_likes,0.5585712387663735
+News,N,0
+News,gross,0.13440844233751875
 News,num_critic_for_reviews,0.9922332628677327
 News,duration,0.6689210950080515
 News,director_facebook_likes,0.5929941236943306
@@ -220,6 +254,8 @@ News,budget,NaN
 News,imdb_score,0.8316392269148175
 News,aspect_ratio,0.5678828993241288
 News,movie_facebook_likes,0.585638963717221
+Romance,N,0.44825918762088973
+Romance,gross,0.38015650308458676
 Romance,num_critic_for_reviews,0.5775692775707768
 Romance,duration,0.7200670498084292
 Romance,director_facebook_likes,0.3381186762535018
@@ -233,6 +269,8 @@ Romance,budget,0.29591590091977005
 Romance,imdb_score,0.29093747685927945
 Romance,aspect_ratio,0.8277581980018812
 Romance,movie_facebook_likes,0.3725422994234362
+Sci-Fi,N,0.2369439071566731
+Sci-Fi,gross,0.7590963207452068
 Sci-Fi,num_critic_for_reviews,1
 Sci-Fi,duration,0.7234563528373854
 Sci-Fi,director_facebook_likes,0.5212107433879639
@@ -246,6 +284,8 @@ Sci-Fi,budget,0.6723026213227449
 Sci-Fi,imdb_score,0.2291751163024636
 Sci-Fi,aspect_ratio,0.9292585182331735
 Sci-Fi,movie_facebook_likes,1
+Short,N,4.8355899419729207e-4
+Short,gross,0.03669613247147048
 Short,num_critic_for_reviews,0
 Short,duration,0
 Short,director_facebook_likes,0.006197408333439099
@@ -259,6 +299,8 @@ Short,budget,0.006814531804983041
 Short,imdb_score,0.49491768074445214
 Short,aspect_ratio,0.4850666431726933
 Short,movie_facebook_likes,0.0012884057201778864
+Sport,N,0.07833655705996131
+Sport,gross,0.3784793735847232
 Sport,num_critic_for_reviews,0.5168331580977384
 Sport,duration,0.7283957203402389
 Sport,director_facebook_likes,0.5833568235542458
@@ -272,6 +314,8 @@ Sport,budget,0.2808182941191843
 Sport,imdb_score,0.38818590230599276
 Sport,aspect_ratio,0.8585634656712103
 Sport,movie_facebook_likes,0.2968021860995954
+Thriller,N,0.5425531914893617
+Thriller,gross,0.4380671189042351
 Thriller,num_critic_for_reviews,0.8189178713792168
 Thriller,duration,0.7238503247880912
 Thriller,director_facebook_likes,0.5917085931731528
@@ -285,6 +329,8 @@ Thriller,budget,0.39347846411134424
 Thriller,imdb_score,0.2589927149578254
 Thriller,aspect_ratio,0.9693806040378147
 Thriller,movie_facebook_likes,0.5481725154527606
+War,N,0.0788201160541586
+War,gross,0.3642955619657698
 War,num_critic_for_reviews,0.6695371915956427
 War,duration,0.941347551156671
 War,director_facebook_likes,0.7494329394436842
@@ -298,6 +344,8 @@ War,budget,0.592716425571332
 War,imdb_score,0.6393246853012553
 War,aspect_ratio,0.9555100077525425
 War,movie_facebook_likes,0.5009316440694614
+Western,N,0.0304642166344294
+Western,gross,0.3819234073218821
 Western,num_critic_for_reviews,0.6432940883396504
 Western,duration,0.8849788647342995
 Western,director_facebook_likes,0.773840207003338

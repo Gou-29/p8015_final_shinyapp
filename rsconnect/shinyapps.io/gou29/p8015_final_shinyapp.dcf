@@ -5,9 +5,9 @@ account: gou29
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 3346268
-bundleId: 3938908
+bundleId: 3943527
 url: https://gou29.shinyapps.io/p8015_final_shinyapp/
-when: 1607014025.21007
+when: 1607095509.00834
 asMultiple: FALSE
 asStatic: FALSE
-ignoredFiles: Circulation.R|README.md
+ignoredFiles: README.md

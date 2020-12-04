@@ -42,8 +42,6 @@ dashboardPage(
       valueBoxOutput("C")
     ),
     fluidRow(
-      box(textOutput("tabset1Selected"))),
-    fluidRow(
       tabBox(id = "tab", width = 12,
              tabPanel("TOP plots",
                       fluidRow(
@@ -75,12 +73,23 @@ dashboardPage(
                       #  column(1),
                       #  actionButton("update", "upadte_plot")),
                       fluidRow(
-                        column(6, plotOutput("plot3")),
-                        column(6, imageOutput("plot4"))
+                        column(1),
+                        column(4, imageOutput("plot3")),
+                        column(2),
+                        column(4, imageOutput("plot4")),
+                        column(1)
                       )
              ),
-             tabPanel("Gross vs. IMDb_score",
-                      plotlyOutput("plot6", width = 800, height = 600)
+             tabPanel("Gross vs. ?",
+                      fluidRow(
+                        column(6, plotlyOutput("plot6", width = 400, height = 400)),
+                        column(6, plotlyOutput("plot7", width = 400, height = 400))
+                      ),
+                      fluidRow(
+                        column(6, plotlyOutput("plot8", width = 400, height = 400)),
+                        column(6, plotlyOutput("plot9", width = 400, height = 400))
+                      )
+                      
              ),
              tabPanel("Circulation plot",
                       fluidRow(
