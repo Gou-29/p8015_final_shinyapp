@@ -15,7 +15,6 @@ library(gifski)
 library(viridis)
 library(lazyeval)
 library(DT)
-
 # Global setting for plot:
 
 theme_set(theme_minimal() + theme(legend.position = "bottom"))

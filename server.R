@@ -1,9 +1,29 @@
 # Server.r
-shinyServer(
-  function(input, output) {
 
-###Plots:
+
+shinyServer(
+  function(input, output, session) {
+
+###Plots: 
+  observe({
+    if(input$tab == "Animation plot"){
+      #showNotification("Warning", type= "warning")
+      showModal(modalDialog(
+        title = "Important message",
+        "This is an important message!",
+        easyClose = TRUE
+      ))
+    }
     
+    })
+    
+    
+    
+      
+  output$tabset1Selected <- renderText({
+      input$tab
+  })   
+ 
     
   output$plot1 <- renderPlotly({ 
     
@@ -18,6 +38,7 @@ shinyServer(
     plot_radar(input$GenreList, name_list_radar_right)})
   
   output$plot3 <- renderImage({ 
+    
     
     outfile <- tempfile(fileext='.gif')
     
@@ -98,6 +119,11 @@ shinyServer(
   output$test_df <- DT::renderDataTable(Radar_df(input$GenreList))
   
   output$test_df_2 <- DT::renderDataTable(Circulation_df(input$GenreList))
+  
+### Others
+  
+  
+
   
   }
 )

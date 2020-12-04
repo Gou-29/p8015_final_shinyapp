@@ -1,5 +1,4 @@
 #ui.R
-
 dashboardPage(
   dashboardHeader(
     title = "IMDb"
@@ -32,8 +31,9 @@ dashboardPage(
                                    "Western" = "Western"), 
                        inline = TRUE,
                        selected = c("Action","Sci-Fi")
-    ),
-    submitButton("Update filters")
+    )
+    #,
+    #submitButton("Update filters")
   ),
   dashboardBody(
     fluidRow(
@@ -42,8 +42,10 @@ dashboardPage(
       valueBoxOutput("C")
     ),
     fluidRow(
+      box(textOutput("tabset1Selected"))),
+    fluidRow(
       tabBox(id = "tab", width = 12,
-             tabPanel("Radar plot",
+             tabPanel("Radar plot", id = "radar", 
                       fluidRow( 
                         column(6, plotlyOutput("plot1")),
                         column(6, plotlyOutput("plot2"))),
