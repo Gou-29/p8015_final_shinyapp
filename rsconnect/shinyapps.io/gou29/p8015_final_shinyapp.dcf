@@ -1,0 +1,13 @@
+name: p8015_final_shinyapp
+title: p8015_final_shinyapp
+username:
+account: gou29
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 3346268
+bundleId: 3938908
+url: https://gou29.shinyapps.io/p8015_final_shinyapp/
+when: 1607014025.21007
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: Circulation.R|README.md

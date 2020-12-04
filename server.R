@@ -23,7 +23,7 @@ shinyServer(
     
     p <- animate(plot_animation_month(input$GenreList), 
                  renderer = gifski_renderer(),
-                 nframes = 60, fps=10, duration=5)
+                 nframes = 30, fps=8, duration=5)
     
     anim_save("outfile1.gif", animation = p)
     
@@ -40,7 +40,7 @@ shinyServer(
     
     p <- animate(plot_animation_year(input$GenreList), 
                  renderer = gifski_renderer(),
-                 nframes = 60, fps=10, duration=5)
+                 nframes = 30, fps=8, duration=5)
     
     anim_save("outfile2.gif", animation = p)
     
@@ -70,21 +70,21 @@ shinyServer(
 ### Valuebox:   
     
   output$A <- renderValueBox({
-    valueBox(paste0("# 1: ", 
+    valueBox(paste0("#1: ", 
                     "$", Circulation_df(input$GenreList)[1,3] %>% as.character()), 
              str_glue(Circulation_df(input$GenreList)[1,2] %>% as.character()," | ",
                    Circulation_df(input$GenreList)[1,1] %>% as.character())
              , icon = icon("fire"), color = "red")
   })
   output$B <- renderValueBox({
-    valueBox(paste0("# 2: ", 
+    valueBox(paste0("#2: ", 
                     "$", Circulation_df(input$GenreList)[2,3] %>% as.character()), 
              str_glue(Circulation_df(input$GenreList)[2,2] %>% as.character()," | ",
                       Circulation_df(input$GenreList)[2,1] %>% as.character())
              , icon = icon("fire"), color = "yellow")
   })
   output$C <- renderValueBox({
-    valueBox(paste0("# 3: ", 
+    valueBox(paste0("#3: ", 
                     "$", Circulation_df(input$GenreList)[3,3] %>% as.character()), 
              str_glue(Circulation_df(input$GenreList)[3,2] %>% as.character()," | ",
                       Circulation_df(input$GenreList)[3,1] %>% as.character())

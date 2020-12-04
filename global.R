@@ -156,7 +156,7 @@ plot_circulate <- function(Genrelist_Circulate)
     ylim(-500000000, max(data$gross)) +
     theme_minimal() +
     theme(
-      legend.position = "right",
+      #legend.position = "right",
       axis.text = element_blank(),
       axis.title = element_blank(),
       panel.grid = element_blank(),
@@ -303,11 +303,12 @@ Radar_df <- function(Genrelist_Radar_df){
   return(output)
 }
 
+## 3. Circulation plot
 Circulation_df <- function(Genrelist_cir_df){
   output <-
     circulation_data %>% 
     filter(genres %in% Genrelist_cir_df) %>% 
-    select(movie_title, director_name, gross) %>% 
+    select(movie_title, director_name, gross, title_year) %>% 
     arrange(-gross) %>% 
     distinct(movie_title, .keep_all = T)
   
