@@ -1,5 +1,6 @@
 #ui.R
 dashboardPage(
+  skin = "yellow",
   dashboardHeader(
     title = "IMDb"
   ),
@@ -31,8 +32,8 @@ dashboardPage(
                                    "Western" = "Western"), 
                        inline = TRUE,
                        selected = c("Action","Sci-Fi")
-    )
-    #,submitButton("update","Update filters")
+    ),
+    submitButton("Update filters")
   ),
   dashboardBody(
     fluidRow(
@@ -44,6 +45,18 @@ dashboardPage(
       box(textOutput("tabset1Selected"))),
     fluidRow(
       tabBox(id = "tab", width = 12,
+             tabPanel("TOP plots",
+                      fluidRow(
+                        column(8, wordcloud2Output('wordcloud2', width = 800, height = 600)),
+                        column(4,
+                               box(title = "Top plots in selected genres:",
+                                   solidHeader = T,
+                                   width = 12,
+                                   collapsible = T,
+                                   div(DT::DTOutput("test_df_3"), style = "font-size: 100%;")))
+                      )
+                      
+             ),
              tabPanel("Radar plot", id = "radar", 
                       fluidRow( 
                         column(6, plotlyOutput("plot1")),
@@ -57,19 +70,22 @@ dashboardPage(
                                     div(DT::DTOutput("test_df"), style = "font-size: 100%;"))))
 
              ),
-             tabPanel("Animation plot",
-                      fluidRow(
-                        column(1),
-                        actionButton("update", "upadte_plot")),
+             tabPanel("Mean_Gross over time",
+                      #fluidRow(
+                      #  column(1),
+                      #  actionButton("update", "upadte_plot")),
                       fluidRow(
                         column(6, plotOutput("plot3")),
                         column(6, imageOutput("plot4"))
                       )
              ),
+             tabPanel("Gross vs. IMDb_score",
+                      plotlyOutput("plot6", width = 800, height = 600)
+             ),
              tabPanel("Circulation plot",
                       fluidRow(
-                        column(8, imageOutput("plot5", height = 800)), 
-                        column(4, 
+                        column(7, imageOutput("plot5", height = 800)), 
+                        column(5, 
                                box(title = "Top Movies in history:",
                                    solidHeader = T,
                                    width = 12,
@@ -77,18 +93,9 @@ dashboardPage(
                                    div(DT::DTOutput("test_df_2"), style = "font-size: 100%;")))
                                )
                       
-             ),
-             tabPanel("Circulation 2",
-                      plotlyOutput("plot6", width = 1200, height = 800)
-             ),
-             tabPanel("TOP plots",
-                      fluidRow(
-                        column(2),
-                        column(8,wordcloud2Output('wordcloud2', width = 800, height = 600)),
-                        column(2)
-                      )
-                      
              )
+             
+             
       )
     )
   )

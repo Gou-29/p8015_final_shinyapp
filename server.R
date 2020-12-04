@@ -2,39 +2,39 @@
 
 
 shinyServer(
-  function(input, output, session) {
+  function(input, output) {
 
-  i <- reactiveValues(data = 0)
-  
-  observeEvent(input$update,
-               {
-                 i$data = i$data +1
-               })
-  
-  
-  
-  observe({
-    if(input$tab == "Animation plot"){
-      if(i$data == 0 )
-        {
-        showModal(modalDialog(
-          title = "Important message",
-          "This is an important message!",
-          easyClose = T))
-        }
-      
-    }
-  })
-  
-  
-  
-    
-  output$tabset1Selected <- renderText({i$data})
-  v_animation <- eventReactive(input$update,
-                {
-                  
-                  return(c(input$GenreList))
-                })
+  #i <- reactiveValues(data = 0)
+  #
+  #observeEvent(input$update,
+  #             {
+  #               i$data = i$data +1
+  #             })
+  #
+  #
+  #
+  #observe({
+  #  if(input$tab == "Animation plot"){
+  #    if(i$data == 0 )
+  #      {
+  #      showModal(modalDialog(
+  #        title = "Important message",
+  #        "This is an important message!",
+  #        easyClose = T))
+  #      }
+  #    
+  #  }
+  #})
+  #
+  #
+  #
+  #  
+  #output$tabset1Selected <- renderText({i$data})
+  #v_animation <- eventReactive(input$update,
+  #              {
+  #                
+  #                return(c(input$GenreList))
+  #              })
     
     
 ###Plots: 
@@ -58,13 +58,21 @@ shinyServer(
   output$plot3 <- renderImage({ 
     
     
-    validate(need(length(input$GenreList) > 0, "Please select"))
+    progress <- shiny::Progress$new(max = 100)
+    progress$set(message = "Rendering", value = 0)
+    on.exit(progress$close())
+    
+    updateShinyProgress <- function(detail) {    
+      progress$inc(1, detail = detail)
+    }
+    
     
     outfile <- tempfile(fileext='.gif')
     
-    p <- animate(plot_animation_month(v_animation()), 
+    p <- animate(plot_animation_month(input$GenreList), 
                  renderer = gifski_renderer(),
-                 nframes = 30, fps=8, duration=5)
+                 nframes = 30, fps=8, duration=5,
+                 update_progress = updateShinyProgress)
     
     anim_save("outfile1.gif", animation = p)
     
@@ -80,14 +88,20 @@ shinyServer(
   
   output$plot4 <- renderImage({ 
     
-
-    validate(need(length(input$GenreList) > 0, "Please select"))
+    progress <- shiny::Progress$new(max = 100)
+    progress$set(message = "Rendering", value = 0)
+    on.exit(progress$close())
+    
+    updateShinyProgress <- function(detail) {    
+      progress$inc(1, detail = detail)
+    }
     
     outfile <- tempfile(fileext='.gif')
     
-    p <- animate(plot_animation_year(v_animation()), 
+    p <- animate(plot_animation_year(input$GenreList), 
                  renderer = gifski_renderer(),
-                 nframes = 30, fps=8, duration=5)
+                 nframes = 30, fps=8, duration=5,
+                 update_progress = updateShinyProgress)
     
     anim_save("outfile2.gif", animation = p)
     
@@ -117,27 +131,28 @@ shinyServer(
     wordcloud2(plot_wordcloud(input$GenreList), backgroundColor = "white")
   })
 
+  
 ### Valuebox:   
     
   output$A <- renderValueBox({
     valueBox(paste0("#1: ", 
-                    "$", Circulation_df(input$GenreList)[1,3] %>% as.character()), 
-             str_glue(Circulation_df(input$GenreList)[1,2] %>% as.character()," | ",
-                   Circulation_df(input$GenreList)[1,1] %>% as.character())
+                    Circulation_df(input$GenreList)[[3]][1] %>% dollar()), 
+             str_glue(Circulation_df(input$GenreList)[[2]][1] %>% as.character()," | ",
+                      Circulation_df(input$GenreList)[[1]][1] %>% as.character())
              , icon = icon("fire"), color = "red")
   })
   output$B <- renderValueBox({
     valueBox(paste0("#2: ", 
-                    "$", Circulation_df(input$GenreList)[2,3] %>% as.character()), 
-             str_glue(Circulation_df(input$GenreList)[2,2] %>% as.character()," | ",
-                      Circulation_df(input$GenreList)[2,1] %>% as.character())
+                    Circulation_df(input$GenreList)[[3]][2] %>% dollar()), 
+             str_glue(Circulation_df(input$GenreList)[[2]][2] %>% as.character()," | ",
+                      Circulation_df(input$GenreList)[[1]][2] %>% as.character())
              , icon = icon("fire"), color = "yellow")
   })
   output$C <- renderValueBox({
     valueBox(paste0("#3: ", 
-                    "$", Circulation_df(input$GenreList)[3,3] %>% as.character()), 
-             str_glue(Circulation_df(input$GenreList)[3,2] %>% as.character()," | ",
-                      Circulation_df(input$GenreList)[3,1] %>% as.character())
+                    Circulation_df(input$GenreList)[[3]][3] %>% dollar()), 
+             str_glue(Circulation_df(input$GenreList)[[2]][3] %>% as.character()," | ",
+                      Circulation_df(input$GenreList)[[1]][3] %>% as.character())
              , icon = icon("fire"), color = "blue")
   })
   
@@ -148,6 +163,8 @@ shinyServer(
   output$test_df <- DT::renderDataTable(Radar_df(input$GenreList))
   
   output$test_df_2 <- DT::renderDataTable(Circulation_df(input$GenreList))
+  
+  output$test_df_3 <- DT::renderDataTable(Word_df(input$GenreList))
   
 ### Others
   

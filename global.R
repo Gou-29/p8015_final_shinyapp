@@ -15,6 +15,9 @@ library(gifski)
 library(viridis)
 library(lazyeval)
 library(DT)
+library(scales)
+library(prettyunits)
+
 # Global setting for plot:
 
 theme_set(theme_minimal() + theme(legend.position = "bottom"))
@@ -25,7 +28,7 @@ options(
 scale_colour_discrete = scale_color_viridis_d
 scale_fill_discrete = scale_fill_viridis_d
 
-
+dollar_format(prefix = "$", suffix = "", largest_with_cents = 1e+05, big.mark = ",", negative_parens = FALSE)
 
 #The data for plot
 
@@ -33,6 +36,8 @@ radarplot_data <- read_csv("./Dataset/shiny_radar.csv")
 animation_data <- read_csv("./Dataset/shiny_animation.csv")
 circulation_data <- read_csv("./Dataset/shiny_circulation.csv")
 wordcloud_data = read_csv("./Dataset/shiny_keyword.csv")
+plotly_df = read_csv("./Dataset/shiny_plotly.csv")
+
 #The data for dfs
 
 radarplot_df <- read_csv("./Dataset/shiny_radar_df.csv")
@@ -139,6 +144,62 @@ plot_animation_year <- function(Genreslist_Animation){
 }
 
 
+## the plotly substitute for animation 1
+#accumulate_by <- function(dat, var) {
+#  var <- lazyeval::f_eval(var, dat)
+#  lvls <- plotly:::getLevels(var)
+#  dats <- lapply(seq_along(lvls), function(x) {
+#    cbind(dat[var %in% lvls[seq(1, x)], ], frame = lvls[[x]])
+#  })
+#  dplyr::bind_rows(dats)
+#}
+#
+#p <- 
+#  animation_data %>%  
+#  drop_na(month) %>% 
+#  filter(genres %in% Genrelist_Animation_2) %>% 
+#  group_by(genres, month) %>%
+#  summarize(mean_gross = mean(gross))
+#
+#p <- p %>% accumulate_by( ~ month)
+#
+#p <- p %>%
+#  plot_ly(
+#    x = ~month, 
+#    y = ~mean_gross,
+#    split = ~ genres,
+#    frame = ~frame, 
+#    type = 'scatter',
+#    mode = 'lines + markers', 
+#    line = list(simplyfy = F),
+#    marker = list(size = 10)
+#  )
+#p <- p %>% layout(
+#  xaxis = list(
+#    title = "Month",
+#    zeroline = F
+#  ),
+#  yaxis = list(
+#    title = "Mean_Gross",
+#    zeroline = F
+#  )
+#) 
+#p <- p %>% animation_opts(
+#  frame = 100, 
+#  transition = 0, 
+#  redraw = FALSE
+#)
+#p <- p %>% animation_slider(
+#  hide = T
+#)
+#p <- p %>% animation_button(
+#  x = 1, xanchor = "right", y = 0, yanchor = "bottom"
+#)
+#
+#return(p)
+
+
+
 ## 3. Circular plot
 
 plot_circulate <- function(Genrelist_Circulate)
@@ -175,64 +236,60 @@ plot_circulate <- function(Genrelist_Circulate)
   return(fplot)
 }
 
-## 4. Animation 2:
+
+
+## 4. Gross vs. IMDb_score (the marker size represents the budget level):
 
 plot_animation_2 <- function(Genrelist_Animation_2)
 {
-  accumulate_by <- function(dat, var) {
-    var <- lazyeval::f_eval(var, dat)
-    lvls <- plotly:::getLevels(var)
-    dats <- lapply(seq_along(lvls), function(x) {
-      cbind(dat[var %in% lvls[seq(1, x)], ], frame = lvls[[x]])
-    })
-    dplyr::bind_rows(dats)
-  }
-  
   p <- 
-    animation_data %>%  
-    drop_na(month) %>% 
-    filter(genres %in% Genrelist_Animation_2) %>% 
-    group_by(genres, month) %>%
-    summarize(mean_gross = mean(gross))
-  
-  p <- p %>% accumulate_by( ~ month)
+    plotly_df %>% 
+    filter(genres %in% Genrelist_Animation_2, title_year > 1980, imdb_score > 3) %>% 
+    mutate(genres = factor(genres))
   
   p <- p %>%
     plot_ly(
-      x = ~month, 
-      y = ~mean_gross,
-      split = ~ genres,
-      frame = ~frame, 
+      x = ~imdb_score, 
+      y = ~gross, 
+      size = ~budget,
+      color = ~genres,
+      #colors = brewer.pal(nlevels(pull(df1,genres)),
+      #"Paired"),
+      frame = ~title_year, 
+      text = ~movie_title, 
+      hoverinfo = "text",
       type = 'scatter',
-      mode = 'lines + markers', 
-      line = list(simplyfy = F),
-      marker = list(size = 10)
+      mode = 'markers'
     )
-  p <- p %>% layout(
-    xaxis = list(
-      title = "Month",
-      zeroline = F
-    ),
-    yaxis = list(
-      title = "Mean_Gross",
-      zeroline = F
-    )
-  ) 
+  
+  
   p <- p %>% animation_opts(
-    frame = 100, 
-    transition = 0, 
-    redraw = FALSE
-  )
-  p <- p %>% animation_slider(
-    hide = T
-  )
-  p <- p %>% animation_button(
-    x = 1, xanchor = "right", y = 0, yanchor = "bottom"
+    1000, easing = "elastic", redraw = FALSE
   )
   
   return(p)
   
 }
+
+## IMDb_score Draft
+
+#plot_animation_IMDb <- function(Genreslist_Animation){
+#  p <- 
+#    animation_data %>%  
+#    drop_na(year,month,imdb_score) %>%
+#    mutate(year = as.numeric(year)) %>% 
+#    filter(genres %in% Genreslist_Animation, year > 1980) %>% 
+#    group_by(year, genres, imdb_score) %>%
+#    summarize(mean_gross = mean(gross)) %>%
+#    ggplot(aes(x = imdb_score, y = mean_gross, group = genres)) + 
+#    geom_point(aes(color = genres), show.legend = FALSE, alpha = 0.7) +
+#    scale_color_viridis_d() +
+#    scale_size(range = c(2, 12)) +
+#    labs(x = "IMDb Score", y = "Mean Gross")
+#  p + transition_time(as.integer(year)) + labs(title = "Year: {frame_time}") + shadow_wake(wake_length = 0.1, alpha = FALSE)
+#  return(p)
+#}
+
 
 ## IMDb_score  (X not use)
 
@@ -308,7 +365,7 @@ Radar_df <- function(Genrelist_Radar_df){
   return(output)
 }
 
-## 3. Circulation plot
+## 2. Circulation plot
 Circulation_df <- function(Genrelist_cir_df){
   output <-
     circulation_data %>% 
@@ -320,4 +377,14 @@ Circulation_df <- function(Genrelist_cir_df){
   return(output)
 }
 
+## 3. Word cloud
 
+Word_df <- function(Genrelist_wc){
+  output <-
+    wordcloud_data %>% 
+    filter(genres %in% Genrelist_wc) %>% 
+    group_by(genres, plot_keyword) %>% 
+    summarise(freq = n()) %>% 
+    arrange(desc(freq))
+  return(output)
+}
