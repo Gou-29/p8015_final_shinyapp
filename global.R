@@ -318,6 +318,7 @@ gross_lm_df <- function(Genrelist_lm, selected_var)
 {
   if(length(selected_var)==0) return()
   
+  if(is.na(selected_var)) return()
   
   if(length(Genrelist_lm)==0) return()
   
