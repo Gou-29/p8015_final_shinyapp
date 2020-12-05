@@ -96,6 +96,8 @@ shinyServer(
    
   output$plot6 <- renderPlotly({ 
     
+    validate(need(length(input$varlist) > 0, "Please select"))
+    
     validate(need(length(input$GenreList) > 0, "please select"))
     
     progress <- shiny::Progress$new(max = 40)
@@ -108,6 +110,8 @@ shinyServer(
   
   output$plot7 <- renderPlotly({ 
     
+    validate(need(length(input$varlist) > 0, "Please select"))
+    
     validate(need(length(input$GenreList) > 0, "please select"))
     
     progress <- shiny::Progress$new(max = 40)
@@ -118,6 +122,8 @@ shinyServer(
   
   output$plot8 <- renderPlotly({ 
     
+    validate(need(length(input$varlist) > 0, "Please select"))
+    
     validate(need(length(input$GenreList) > 0, "please select"))
     
     progress <- shiny::Progress$new(max = 40)
@@ -126,7 +132,9 @@ shinyServer(
     
     plot_grossplus(input$GenreList,input$varlist[3])})
   
-  output$plot9 <- renderPlotly({ 
+  output$plot9 <- renderPlotly({
+    
+    validate(need(length(input$varlist) > 0, "Please select"))
     
     validate(need(length(input$GenreList) > 0, "please select"))
     
@@ -144,21 +152,21 @@ shinyServer(
 ### Valuebox:   
     
   output$A <- renderValueBox({
-    valueBox(paste0("#1: ", 
+    valueBox(paste0("Top 1: ", 
                     Circulation_df(input$GenreList)[[3]][1] %>% dollar()), 
              str_glue(Circulation_df(input$GenreList)[[2]][1] %>% as.character()," | ",
                       Circulation_df(input$GenreList)[[1]][1] %>% as.character())
              , icon = icon("fire"), color = "red")
   })
   output$B <- renderValueBox({
-    valueBox(paste0("#2: ", 
+    valueBox(paste0("Top 2: ", 
                     Circulation_df(input$GenreList)[[3]][2] %>% dollar()), 
              str_glue(Circulation_df(input$GenreList)[[2]][2] %>% as.character()," | ",
                       Circulation_df(input$GenreList)[[1]][2] %>% as.character())
              , icon = icon("fire"), color = "yellow")
   })
   output$C <- renderValueBox({
-    valueBox(paste0("#3: ", 
+    valueBox(paste0("Top 3: ", 
                     Circulation_df(input$GenreList)[[3]][3] %>% dollar()), 
              str_glue(Circulation_df(input$GenreList)[[2]][3] %>% as.character()," | ",
                       Circulation_df(input$GenreList)[[1]][3] %>% as.character())
@@ -169,11 +177,26 @@ shinyServer(
   
 ### Dfs:
   
-  output$test_df <- DT::renderDataTable(Radar_df(input$GenreList))
+  output$Radar <- DT::renderDataTable(Radar_df(input$GenreList))
   
-  output$test_df_2 <- DT::renderDataTable(Circulation_df(input$GenreList))
+  output$Circulation <- DT::renderDataTable(Circulation_df(input$GenreList))
   
-  output$test_df_3 <- DT::renderDataTable(Word_df(input$GenreList))
+  output$Wordcloud <- DT::renderDataTable(Word_df(input$GenreList))
+  
+  output$lm_1 <- DT::renderDataTable(gross_lm_df(input$GenreList,input$varlist[1]))
+  
+  output$lm_2 <- DT::renderDataTable(gross_lm_df(input$GenreList,input$varlist[2]))
+  
+  output$lm_3 <- DT::renderDataTable(gross_lm_df(input$GenreList,input$varlist[3]))
+  
+  output$lm_4 <- DT::renderDataTable(gross_lm_df(input$GenreList,input$varlist[4]))
+  
+  output$animation_1 <- DT::renderDataTable(animation_month_df(input$GenreList))
+  
+  output$animation_2 <- DT::renderDataTable(animation_year_df(input$GenreList))
+  
+  
+  
   
 ### Others
   

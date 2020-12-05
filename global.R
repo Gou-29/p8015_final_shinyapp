@@ -18,6 +18,7 @@ library(DT)
 library(scales)
 library(prettyunits)
 library(png)
+library(broom)
 
 # Global setting for plot:
 
@@ -115,7 +116,7 @@ plot_animation_month <- function(Genreslist_Animation){
     labs(title = "Trends of mean_gross by genres over months",
          x = "Month", 
          y = "Mean Gross") +
-    theme(axis.text.x = element_text(angle = 45)) 
+    theme(axis.text.x = element_text(angle = -45)) 
   p<- p + transition_reveal(month)
   return(p)
 }
@@ -183,29 +184,25 @@ plot_circulate <- function(Genrelist_Circulate)
   return(fplot)
 }
 
+## 4. Gross vs. IMDb_score + the regression result
 
-
-## 4. Gross vs. IMDb_score (the marker size represents the budget level):
-
-plot_grossplus <- function(Genrelist_Animation_2, selected_var)
+plot_grossplus <- function(Genrelist_gross, selected_var)
 {
   if(is.na(selected_var)) return()
   
   p <- 
     plotly_df %>% 
-    filter(genres %in% Genrelist_Animation_2, title_year > 1980, imdb_score > 3) %>% 
-    mutate(genres = as.factor(genres)) 
-  
-  #namelist <- names(p)
-  
-  #var <- namelist[namelist == selected_var]
+    filter(genres %in% Genrelist_gross, title_year > 1980, imdb_score > 3) %>% 
+    mutate(genres = as.factor(genres)) %>% 
+    select(gross, selected_var, genres, movie_title)
   
   gg <- ggplot(p, aes_string(x = selected_var, y = 'gross', color = 'genres')) +
-    geom_point(aes(frame = genres, ids = movie_title)) +
+    geom_point(aes(frame = genres, ids = movie_title, alpha = gross)) +
     theme(legend.position = "none") +
-    geom_smooth(aes(frame = genres), method = "lm", se= F)
+    geom_smooth(aes(frame = genres), method = "lm", se= F) +
+    ggtitle(str_c("Gross v.s. ", selected_var))
   ggplotly(gg)
-  
+ 
   
   return(gg)
   
@@ -287,4 +284,83 @@ Word_df <- function(Genrelist_wc){
     summarise(freq = n()) %>% 
     arrange(desc(freq))
   return(output)
+}
+
+## Regression
+
+gross_lm_df <- function(Genrelist_lm, selected_var)
+{
+  if(length(selected_var)==0) return()
+  
+  if(is.na(selected_var)) return()
+  
+  lm_df <- 
+    plotly_df %>% 
+    filter(genres %in% Genrelist_lm, title_year > 1980, imdb_score > 3) %>% 
+    select(gross, selected_var, genres)
+  
+  lm_result <- tibble(dummy = 0, genres = "")
+  
+  
+  #return(lm_result)
+  for (t in Genrelist_lm)
+  {
+    lm_df_sub <-
+      lm_df %>% 
+      filter(genres == t) %>% 
+      select(-genres)
+    
+    
+    lm_result_sub  <- lm(gross~., data = lm_df_sub) 
+    lm_result_sub <-  
+      broom::tidy(lm_result_sub) %>% 
+      column_to_rownames("term") %>%
+      t() %>% 
+      as_tibble() %>% 
+      select(selected_var) %>% 
+      rename(dummy = selected_var) %>% 
+      mutate(genres = t)
+    
+    lm_result <-
+      rbind(lm_result, lm_result_sub)
+  }
+  
+  lm_result <-
+    lm_result %>% 
+    slice(-1) 
+  
+  
+  return(lm_result)
+  
+}
+
+
+
+## Animation plot
+
+
+animation_month_df <- function(Genrelist_month_df)
+{
+  ot <- 
+    animation_data %>% 
+    select(-year) %>% 
+    group_by(genres, month) %>% 
+    summarise(N= n(),
+              Mean_imdb_score = mean(imdb_score, na.rm = T),
+              Mean_Gross = mean(gross, na.rm = T))
+  return(ot)
+}
+
+
+animation_year_df <- function(Genrelist_year_df)
+{
+  ot1 <- 
+    animation_data %>% 
+    select(-month) %>% 
+    group_by(genres, year) %>% 
+    summarise(N= n(),
+              Mean_imdb_score = mean(imdb_score, na.rm = T),
+              Mean_Gross = mean(gross, na.rm = T)) %>% 
+    arrange(desc(year))
+  return(ot1)
 }

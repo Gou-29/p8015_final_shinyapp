@@ -2,11 +2,13 @@
 dashboardPage(
   skin = "yellow",
   dashboardHeader(
-    title = "IMDb"
+    title = "IMDb Explore!"
   ),
   dashboardSidebar(
+    sidebarMenu(
+      menuItem(
     checkboxGroupInput(inputId = "GenreList",
-                       label = 'Genre:', 
+                       label = 'Select Genre:', 
                        choices = c("Action" = "Action",
                                    "Adventure" = "Adventure",
                                    "Animation" = "Animation",
@@ -32,8 +34,10 @@ dashboardPage(
                                    "Western" = "Western"), 
                        inline = TRUE,
                        selected = c("Action","Sci-Fi")
-    ),
-    submitButton("Update filters")
+    )),
+    menuItem(submitButton("Update filters")),
+    menuItem(text = "Back to homepage", href = "https://seriousbamboo.github.io/p8105_IMDb.github.io/"),
+    menuItem(text = "Github Code for the website", href = "https://github.com/Gou-29/p8015_final_shinyapp"))
   ),
   dashboardBody(
     fluidRow(
@@ -51,7 +55,7 @@ dashboardPage(
                                    solidHeader = T,
                                    width = 12,
                                    collapsible = T,
-                                   div(DT::DTOutput("test_df_3"), style = "font-size: 100%;")))
+                                   div(DT::DTOutput("Wordcloud"), style = "font-size: 100%;")))
                       )
                       
              ),
@@ -65,22 +69,34 @@ dashboardPage(
                                     solidHeader = T,
                                     width = 12,
                                     collapsible = T,
-                                    div(DT::DTOutput("test_df"), style = "font-size: 100%;"))))
+                                    div(DT::DTOutput("Radar"), style = "font-size: 100%;"))))
 
              ),
              tabPanel("Mean_Gross over time",
-                      #fluidRow(
-                      #  column(1),
-                      #  actionButton("update", "upadte_plot")),
                       fluidRow(
                         column(1),
                         column(4, imageOutput("plot3")),
                         column(2),
                         column(4, imageOutput("plot4")),
                         column(1)
+                      ),
+                      fluidRow(
+                        column(6,
+                               box(title = "Source Data:",
+                                   solidHeader = T,
+                                   width = 12,
+                                   collapsible = T,
+                                   div(DT::DTOutput("animation_1"), style = "font-size: 100%;"))),
+                        column(6,
+                               box(title = "Source Data:",
+                                   solidHeader = T,
+                                   width = 12,
+                                   collapsible = T,
+                                   div(DT::DTOutput("animation_2"), style = "font-size: 100%;")))
+                        
                       )
              ),
-             tabPanel("Gross vs. ?",
+             tabPanel("Gross vs. Everything!",
                       fluidRow(
                         box(width = 10, 
                         checkboxGroupInput(inputId = "varlist",
@@ -99,18 +115,42 @@ dashboardPage(
                                                        "movie_facebook_likes" = "movie_facebook_likes"
                                                        ), 
                                            inline = TRUE,
-                                           selected = c("num_critic_for_reviews","director_facebook_likes")
+                                           selected = c("num_critic_for_reviews","imdb_score")
                         ),
-                        submitButton("Update filters"))
+                        submitButton("Update Variable list"))
                       ),
                       
                       fluidRow(
-                        column(6, plotlyOutput("plot6", width = 400, height = 400)),
-                        column(6, plotlyOutput("plot7", width = 400, height = 400))
+                        column(3, plotlyOutput("plot6")), #width = 400, height = 400)),
+                        column(3, 
+                               box(title = "Regression results:",
+                                   solidHeader = F,
+                                   width = 12,
+                                   collapsible = T,
+                                   div(DT::DTOutput("lm_1"), style = "font-size: 100%;"))),
+                        column(3, plotlyOutput("plot7")), #width = 400, height = 400)),
+                        column(3, 
+                               box(title = "Regression results:",
+                                   solidHeader = F,
+                                   width = 12,
+                                   collapsible = T,
+                                   div(DT::DTOutput("lm_2"), style = "font-size: 100%;")))
                       ),
                       fluidRow(
-                        column(6, plotlyOutput("plot8", width = 400, height = 400)),
-                        column(6, plotlyOutput("plot9", width = 400, height = 400))
+                        column(3, plotlyOutput("plot8")), #width = 400, height = 400)),
+                        column(3, 
+                               box(title = "Regression results:",
+                                   solidHeader = F,
+                                   width = 12,
+                                   collapsible = T,
+                                   div(DT::DTOutput("lm_3"), style = "font-size: 100%;", height = "20%"))),
+                        column(3, plotlyOutput("plot9")), #width = 400, height = 400)),
+                        column(3, 
+                               box(title = "Regression results:",
+                                   solidHeader = F,
+                                   width = 12,
+                                   collapsible = T,
+                                   div(DT::DTOutput("lm_4"), style = "font-size: 100%;", height = "20%")))
                       )
                       
              ),
@@ -122,7 +162,7 @@ dashboardPage(
                                    solidHeader = T,
                                    width = 12,
                                    collapsible = T,
-                                   div(DT::DTOutput("test_df_2"), style = "font-size: 100%;")))
+                                   div(DT::DTOutput("Circulation"), style = "font-size: 100%;")))
                                )
                       
              )
