@@ -1,67 +1,67 @@
 movie_title,director_name,gross,title_year,genres
 Avatar,James Cameron,760505847,2009,Action
-Pirates of the Caribbean: At World's End,Gore Verbinski,309404152,2007,Action
-Spectre,Sam Mendes,200074175,2015,Action
+Jurassic World,Colin Trevorrow,652177271,2015,Action
+The Avengers,Joss Whedon,623279547,2012,Action
 Avatar,James Cameron,760505847,2009,Adventure
-Pirates of the Caribbean: At World's End,Gore Verbinski,309404152,2007,Adventure
-Spectre,Sam Mendes,200074175,2015,Adventure
+Jurassic World,Colin Trevorrow,652177271,2015,Adventure
+The Avengers,Joss Whedon,623279547,2012,Adventure
 Avatar,James Cameron,760505847,2009,Fantasy
-Pirates of the Caribbean: At World's End,Gore Verbinski,309404152,2007,Fantasy
-Tangled,Nathan Greno,200807262,2010,Fantasy
+Star Wars: Episode I - The Phantom Menace,George Lucas,474544677,1999,Fantasy
+Star Wars: Episode IV - A New Hope,George Lucas,460935665,1977,Fantasy
 Avatar,James Cameron,760505847,2009,Sci-Fi
-John Carter,Andrew Stanton,73058679,2012,Sci-Fi
-Avengers: Age of Ultron,Joss Whedon,458991599,2015,Sci-Fi
-Spectre,Sam Mendes,200074175,2015,Thriller
+Jurassic World,Colin Trevorrow,652177271,2015,Sci-Fi
+The Avengers,Joss Whedon,623279547,2012,Sci-Fi
+Jurassic World,Colin Trevorrow,652177271,2015,Thriller
+The Dark Knight,Christopher Nolan,533316061,2008,Thriller
 The Dark Knight Rises,Christopher Nolan,448130642,2012,Thriller
-Battleship,Peter Berg,65173160,2012,Thriller
-Spider-Man 3,Sam Raimi,336530303,2007,Romance
-Tangled,Nathan Greno,200807262,2010,Romance
-King Kong,Peter Jackson,218051260,2005,Romance
-Tangled,Nathan Greno,200807262,2010,Animation
-Monsters University,Dan Scanlon,268488329,2013,Animation
-Cars 2,John Lasseter,191450875,2011,Animation
-Tangled,Nathan Greno,200807262,2010,Comedy
-Men in Black 3,Barry Sonnenfeld,179020854,2012,Comedy
-Monsters University,Dan Scanlon,268488329,2013,Comedy
-Tangled,Nathan Greno,200807262,2010,Family
-Harry Potter and the Half-Blood Prince,David Yates,301956980,2009,Family
-The Chronicles of Narnia: Prince Caspian,Andrew Adamson,141614023,2008,Family
-Tangled,Nathan Greno,200807262,2010,Musical
+Titanic,James Cameron,658672302,1997,Romance
+Shrek 2,Andrew Adamson,436471036,2004,Romance
+Spider-Man,Sam Raimi,403706375,2002,Romance
+Shrek 2,Andrew Adamson,436471036,2004,Animation
+The Lion King,Roger Allers,422783777,1994,Animation
+Toy Story 3,Lee Unkrich,414984497,2010,Animation
+Shrek 2,Andrew Adamson,436471036,2004,Comedy
+Toy Story 3,Lee Unkrich,414984497,2010,Comedy
+Frozen,Chris Buck,400736600,2013,Comedy
+Shrek 2,Andrew Adamson,436471036,2004,Family
+E.T. the Extra-Terrestrial,Steven Spielberg,434949459,1982,Family
+The Lion King,Roger Allers,422783777,1994,Family
+The Lion King,Roger Allers,422783777,1994,Musical
 Frozen,Chris Buck,400736600,2013,Musical
-Happy Feet 2,George Miller,63992328,2011,Musical
+Aladdin,Ron Clements,217350219,1992,Musical
 Harry Potter and the Half-Blood Prince,David Yates,301956980,2009,Mystery
-Hugo,Martin Scorsese,73820094,2011,Mystery
-Tomorrowland,Brad Bird,93417865,2015,Mystery
-The Lone Ranger,Gore Verbinski,89289910,2013,Western
-Wild Wild West,Barry Sonnenfeld,113745408,1999,Western
+The Sixth Sense,M. Night Shyamalan,293501675,1999,Mystery
+Harry Potter and the Order of the Phoenix,David Yates,292000866,2007,Mystery
+Dances with Wolves,Kevin Costner,184208848,1990,Western
 The Revenant,Alejandro G. I??rritu,183635922,2015,Western
-Robin Hood,Ridley Scott,105219735,2010,Drama
-King Kong,Peter Jackson,218051260,2005,Drama
+True Grit,Ethan Coen,171031347,2010,Western
 Titanic,James Cameron,658672302,1997,Drama
-Robin Hood,Ridley Scott,105219735,2010,History
+The Dark Knight,Christopher Nolan,533316061,2008,Drama
+The Lion King,Roger Allers,422783777,1994,Drama
+American Sniper,Clint Eastwood,350123553,2014,History
+Gone with the Wind,Victor Fleming,198655278,1939,History
 Pearl Harbor,Michael Bay,198539855,2001,History
-Alexander,Oliver Stone,34293771,2004,History
+The Blind Side,John Lee Hancock,255950375,2009,Sport
+Cars,John Lasseter,244052771,2006,Sport
 Cars 2,John Lasseter,191450875,2011,Sport
-Turbo,David Soren,83024900,2013,Sport
-Speed Racer,Lana Wachowski,43929341,2008,Sport
-Furious 7,James Wan,350034110,2015,Crime
-Rush Hour 3,Brett Ratner,140080850,2007,Crime
 The Dark Knight,Christopher Nolan,533316061,2008,Crime
-World War Z,Marc Forster,202351611,2013,Horror
-The Mummy: Tomb of the Dragon Emperor,Rob Cohen,102176165,2008,Horror
+Furious 7,James Wan,350034110,2015,Crime
+Beverly Hills Cop,Martin Brest,234760500,1984,Crime
 I Am Legend,Francis Lawrence,256386216,2007,Horror
-Pearl Harbor,Michael Bay,198539855,2001,War
-Alexander,Oliver Stone,34293771,2004,War
-The Last Samurai,Edward Zwick,111110575,2003,War
-Alexander,Oliver Stone,34293771,2004,Biography
-The Aviator,Martin Scorsese,102608827,2004,Biography
-Ali,Michael Mann,58183966,2001,Biography
-Home on the Range,Will Finn,50026353,2004,Music
-Alvin and the Chipmunks: The Road Chip,Walt Becker,85884815,2015,Music
+The Exorcist,William Friedkin,204565000,1973,Horror
+World War Z,Marc Forster,202351611,2013,Horror
+American Sniper,Clint Eastwood,350123553,2014,War
+Saving Private Ryan,Steven Spielberg,216119491,1998,War
+300,Zack Snyder,210592590,2006,War
+American Sniper,Clint Eastwood,350123553,2014,Biography
+The Blind Side,John Lee Hancock,255950375,2009,Biography
+Lincoln,Steven Spielberg,182204440,2012,Biography
+Alvin and the Chipmunks: The Squeakquel,Betty Thomas,219613391,2009,Music
+Alvin and the Chipmunks,Tim Hill,217326336,2007,Music
 Happy Feet,George Miller,197992827,2006,Music
-Oceans,Jacques Perrin,19406406,2009,Documentary
-This Is It,Kenny Ortega,71844424,2009,Documentary
-Winged Migration,Jacques Perrin,10762178,2001,Documentary
+Fahrenheit 9/11,Michael Moore,119078393,2004,Documentary
+Jackass 3D,Jeff Tremaine,117224271,2010,Documentary
+March of the Penguins,Luc Jacquet,77413017,2005,Documentary
 Capitalism: A Love Story,Michael Moore,14359793,2009,News
 Dolphins and Whales 3D: Tribes of the Ocean,Jean-Jacques Mantello,7518876,2008,Short
 Marilyn Hotchkiss' Ballroom Dancing and Charm School,Randall Miller,333658,1990,Short

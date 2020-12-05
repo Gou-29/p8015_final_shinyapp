@@ -156,8 +156,14 @@ plot_circulate <- function(Genrelist_Circulate)
   data <-
     circulation_data %>% 
     filter(genres %in% Genrelist_Circulate) 
+  
+  if(nrow(data)==0) return()
+  
   data = data %>% arrange(genres)
   data$id = seq(1, nrow(data))
+  
+  
+  
   
   label_data = data
   number_of_bar = nrow(label_data)

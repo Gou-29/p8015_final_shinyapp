@@ -2,8 +2,26 @@
 
 
 shinyServer(
-  function(input, output) {
-
+  function(input, output, session) {
+    
+    
+  begin <- reactiveValues(data = 0)
+  
+  observe({
+    if(begin$data == 0){
+      showModal(modalDialog(
+        title = "Browser zoom settings and plot rendering notes:",
+        "For a better experience, please set you zoom of browser to 90%. 
+        Note that rendering pictures take time, please wait when changing filters. 
+        Also, please do not add lots of filters in a single time to prevent disconnection",
+        footer = modalButton("Got it!"),
+        easyClose = F
+      ))
+    }
+    })
+  
+  
+  
 ###Plots: 
     
   output$plot1 <- renderPlotly({ 

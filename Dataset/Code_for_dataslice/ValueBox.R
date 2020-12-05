@@ -21,6 +21,7 @@ for (g in genrelist){
   df_sub <- 
     df %>% 
     filter(genres == g) %>% 
+    arrange(gross = desc(gross)) %>% 
     slice(1:3)
   
   df_final <- rbind(df_final, df_sub)
