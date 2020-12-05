@@ -145,6 +145,9 @@ shinyServer(
     plot_grossplus(input$GenreList,input$varlist[4])})
   
   output$wordcloud2 <- renderWordcloud2({
+    
+    validate(need(length(input$GenreList) > 0, "please select"))
+    
     wordcloud2(plot_wordcloud(input$GenreList), backgroundColor = "white")
   })
 
@@ -153,23 +156,26 @@ shinyServer(
     
   output$A <- renderValueBox({
     valueBox(paste0("Top 1: ", 
-                    Circulation_df(input$GenreList)[[3]][1] %>% dollar()), 
-             str_glue(Circulation_df(input$GenreList)[[2]][1] %>% as.character()," | ",
-                      Circulation_df(input$GenreList)[[1]][1] %>% as.character())
+                    Valubox_df(input$GenreList)[[3]][1] %>% dollar()), 
+             str_glue(Valubox_df(input$GenreList)[[2]][1] %>% as.character()," | ",
+                      Valubox_df(input$GenreList)[[1]][1] %>% as.character()," | ",
+                      Valubox_df(input$GenreList)[[4]][1] %>% as.character())
              , icon = icon("fire"), color = "red")
   })
   output$B <- renderValueBox({
     valueBox(paste0("Top 2: ", 
-                    Circulation_df(input$GenreList)[[3]][2] %>% dollar()), 
-             str_glue(Circulation_df(input$GenreList)[[2]][2] %>% as.character()," | ",
-                      Circulation_df(input$GenreList)[[1]][2] %>% as.character())
+                    Valubox_df(input$GenreList)[[3]][2] %>% dollar()), 
+             str_glue(Valubox_df(input$GenreList)[[2]][2] %>% as.character()," | ",
+                      Valubox_df(input$GenreList)[[1]][2] %>% as.character()," | ",
+                      Valubox_df(input$GenreList)[[4]][2] %>% as.character())
              , icon = icon("fire"), color = "yellow")
   })
   output$C <- renderValueBox({
     valueBox(paste0("Top 3: ", 
-                    Circulation_df(input$GenreList)[[3]][3] %>% dollar()), 
-             str_glue(Circulation_df(input$GenreList)[[2]][3] %>% as.character()," | ",
-                      Circulation_df(input$GenreList)[[1]][3] %>% as.character())
+                    Valubox_df(input$GenreList)[[3]][3] %>% dollar()), 
+             str_glue(Valubox_df(input$GenreList)[[2]][3] %>% as.character()," | ",
+                      Valubox_df(input$GenreList)[[1]][3] %>% as.character()," | ",
+                      Valubox_df(input$GenreList)[[4]][3] %>% as.character())
              , icon = icon("fire"), color = "blue")
   })
   

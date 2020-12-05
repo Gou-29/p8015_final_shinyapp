@@ -1,0 +1,68 @@
+movie_title,director_name,gross,title_year,genres
+Avatar,James Cameron,760505847,2009,Action
+Pirates of the Caribbean: At World's End,Gore Verbinski,309404152,2007,Action
+Spectre,Sam Mendes,200074175,2015,Action
+Avatar,James Cameron,760505847,2009,Adventure
+Pirates of the Caribbean: At World's End,Gore Verbinski,309404152,2007,Adventure
+Spectre,Sam Mendes,200074175,2015,Adventure
+Avatar,James Cameron,760505847,2009,Fantasy
+Pirates of the Caribbean: At World's End,Gore Verbinski,309404152,2007,Fantasy
+Tangled,Nathan Greno,200807262,2010,Fantasy
+Avatar,James Cameron,760505847,2009,Sci-Fi
+John Carter,Andrew Stanton,73058679,2012,Sci-Fi
+Avengers: Age of Ultron,Joss Whedon,458991599,2015,Sci-Fi
+Spectre,Sam Mendes,200074175,2015,Thriller
+The Dark Knight Rises,Christopher Nolan,448130642,2012,Thriller
+Battleship,Peter Berg,65173160,2012,Thriller
+Spider-Man 3,Sam Raimi,336530303,2007,Romance
+Tangled,Nathan Greno,200807262,2010,Romance
+King Kong,Peter Jackson,218051260,2005,Romance
+Tangled,Nathan Greno,200807262,2010,Animation
+Monsters University,Dan Scanlon,268488329,2013,Animation
+Cars 2,John Lasseter,191450875,2011,Animation
+Tangled,Nathan Greno,200807262,2010,Comedy
+Men in Black 3,Barry Sonnenfeld,179020854,2012,Comedy
+Monsters University,Dan Scanlon,268488329,2013,Comedy
+Tangled,Nathan Greno,200807262,2010,Family
+Harry Potter and the Half-Blood Prince,David Yates,301956980,2009,Family
+The Chronicles of Narnia: Prince Caspian,Andrew Adamson,141614023,2008,Family
+Tangled,Nathan Greno,200807262,2010,Musical
+Frozen,Chris Buck,400736600,2013,Musical
+Happy Feet 2,George Miller,63992328,2011,Musical
+Harry Potter and the Half-Blood Prince,David Yates,301956980,2009,Mystery
+Hugo,Martin Scorsese,73820094,2011,Mystery
+Tomorrowland,Brad Bird,93417865,2015,Mystery
+The Lone Ranger,Gore Verbinski,89289910,2013,Western
+Wild Wild West,Barry Sonnenfeld,113745408,1999,Western
+The Revenant,Alejandro G. I??rritu,183635922,2015,Western
+Robin Hood,Ridley Scott,105219735,2010,Drama
+King Kong,Peter Jackson,218051260,2005,Drama
+Titanic,James Cameron,658672302,1997,Drama
+Robin Hood,Ridley Scott,105219735,2010,History
+Pearl Harbor,Michael Bay,198539855,2001,History
+Alexander,Oliver Stone,34293771,2004,History
+Cars 2,John Lasseter,191450875,2011,Sport
+Turbo,David Soren,83024900,2013,Sport
+Speed Racer,Lana Wachowski,43929341,2008,Sport
+Furious 7,James Wan,350034110,2015,Crime
+Rush Hour 3,Brett Ratner,140080850,2007,Crime
+The Dark Knight,Christopher Nolan,533316061,2008,Crime
+World War Z,Marc Forster,202351611,2013,Horror
+The Mummy: Tomb of the Dragon Emperor,Rob Cohen,102176165,2008,Horror
+I Am Legend,Francis Lawrence,256386216,2007,Horror
+Pearl Harbor,Michael Bay,198539855,2001,War
+Alexander,Oliver Stone,34293771,2004,War
+The Last Samurai,Edward Zwick,111110575,2003,War
+Alexander,Oliver Stone,34293771,2004,Biography
+The Aviator,Martin Scorsese,102608827,2004,Biography
+Ali,Michael Mann,58183966,2001,Biography
+Home on the Range,Will Finn,50026353,2004,Music
+Alvin and the Chipmunks: The Road Chip,Walt Becker,85884815,2015,Music
+Happy Feet,George Miller,197992827,2006,Music
+Oceans,Jacques Perrin,19406406,2009,Documentary
+This Is It,Kenny Ortega,71844424,2009,Documentary
+Winged Migration,Jacques Perrin,10762178,2001,Documentary
+Capitalism: A Love Story,Michael Moore,14359793,2009,News
+Dolphins and Whales 3D: Tribes of the Ocean,Jean-Jacques Mantello,7518876,2008,Short
+Marilyn Hotchkiss' Ballroom Dancing and Charm School,Randall Miller,333658,1990,Short
+The Lady from Shanghai,Orson Welles,7927,1947,Film-Noir

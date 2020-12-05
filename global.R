@@ -39,6 +39,7 @@ animation_data <- read_csv("./Dataset/shiny_animation.csv")
 circulation_data <- read_csv("./Dataset/shiny_circulation.csv")
 wordcloud_data = read_csv("./Dataset/shiny_keyword.csv")
 plotly_df = read_csv("./Dataset/shiny_plotly.csv")
+valuebox_df = read_csv("./Dataset/shiny_valuedf.csv")
 
 #The data for dfs
 
@@ -116,7 +117,8 @@ plot_animation_month <- function(Genreslist_Animation){
     labs(title = "Trends of mean_gross by genres over months",
          x = "Month", 
          y = "Mean Gross") +
-    theme(axis.text.x = element_text(angle = -45)) 
+    theme(axis.text.x = element_text(angle = -45),
+          plot.title = element_text(hjust = 0.5)) 
   p<- p + transition_reveal(month)
   return(p)
 }
@@ -140,7 +142,8 @@ plot_animation_year <- function(Genreslist_Animation){
          x = "Year", 
          y = "Mean Gross") +
     scale_x_discrete(name ="Year",labels = c("1927" = "", "1928" = "")) +
-    theme(axis.text.x = element_text(angle = 45))
+    theme(axis.text.x = element_text(angle = 45),
+          plot.title = element_text(hjust = 0.5))
   p <- p + transition_reveal(year)
   return(p)
 }
@@ -182,7 +185,7 @@ plot_circulate <- function(Genrelist_Circulate)
   return(fplot)
 }
 
-## 4. Gross vs. IMDb_score + the regression result
+## 4. Gross vs. IMDb_score + the regression line
 
 plot_grossplus <- function(Genrelist_gross, selected_var)
 {
@@ -196,7 +199,9 @@ plot_grossplus <- function(Genrelist_gross, selected_var)
   
   gg <- ggplot(p, aes_string(x = selected_var, y = 'gross', color = 'genres')) +
     geom_point(aes(frame = genres, ids = movie_title, alpha = gross)) +
-    theme(legend.position = "none") +
+    theme(legend.position = "none",
+          plot.title = element_text(hjust = 0.5)) + 
+    xlab(label = "") +
     geom_smooth(aes(frame = genres), method = "lm", se= F) +
     ggtitle(str_c("Versus ", selected_var))
   ggplotly(gg)
@@ -249,6 +254,9 @@ plot_wordcloud <- function(Genrelist_Wordcloud)
 ## 1. Radar plot
 
 Radar_df <- function(Genrelist_Radar_df){
+  
+  if(length(Genrelist_Radar_df) == 0) return()
+  
   output<-
     radarplot_df %>% 
     filter(genres %in% Genrelist_Radar_df) %>% 
@@ -261,7 +269,23 @@ Radar_df <- function(Genrelist_Radar_df){
 }
 
 ## 2. Circulation plot
+Valubox_df <- function(Genrelist_cir_df){
+  
+  if(length(Genrelist_cir_df) == 0) return()
+  output <-
+    valuebox_df %>% 
+    filter(genres %in% Genrelist_cir_df) %>% 
+    select(movie_title, director_name, gross, title_year) %>% 
+    arrange(-gross) %>% 
+    distinct(movie_title, .keep_all = T)
+  
+  return(output)
+}
+
+
 Circulation_df <- function(Genrelist_cir_df){
+  
+  if(length(Genrelist_cir_df) == 0) return()
   output <-
     circulation_data %>% 
     filter(genres %in% Genrelist_cir_df) %>% 
@@ -272,9 +296,13 @@ Circulation_df <- function(Genrelist_cir_df){
   return(output)
 }
 
+
+
 ## 3. Word cloud
 
 Word_df <- function(Genrelist_wc){
+  
+  if(length(Genrelist_wc) == 0) return()
   output <-
     wordcloud_data %>% 
     filter(genres %in% Genrelist_wc) %>% 
@@ -290,7 +318,8 @@ gross_lm_df <- function(Genrelist_lm, selected_var)
 {
   if(length(selected_var)==0) return()
   
-  if(is.na(selected_var)) return()
+  
+  if(length(Genrelist_lm)==0) return()
   
   lm_df <- 
     plotly_df %>% 
@@ -326,7 +355,8 @@ gross_lm_df <- function(Genrelist_lm, selected_var)
   
   lm_result <-
     lm_result %>% 
-    slice(-1) 
+    slice(-1) %>% 
+    mutate(Terms = str_replace(Terms, "statistic", "t.stat"))
   
   
   return(lm_result)
@@ -340,26 +370,30 @@ gross_lm_df <- function(Genrelist_lm, selected_var)
 
 animation_month_df <- function(Genrelist_month_df)
 {
+  if(length(Genrelist_month_df) == 0) return()
+  
   ot <- 
     animation_data %>% 
     select(-year) %>% 
     group_by(genres, month) %>% 
     summarise(N= n(),
-              Mean_imdb_score = mean(imdb_score, na.rm = T),
-              Mean_Gross = mean(gross, na.rm = T))
+              mean_imdb_score = round(mean(imdb_score, na.rm = T),3),
+              mean_Gross = round(mean(gross, na.rm = T),3))
   return(ot)
 }
 
 
 animation_year_df <- function(Genrelist_year_df)
 {
+  if(length(Genrelist_year_df) == 0) return()
+  
   ot1 <- 
     animation_data %>% 
     select(-month) %>% 
     group_by(genres, year) %>% 
     summarise(N= n(),
-              Mean_imdb_score = mean(imdb_score, na.rm = T),
-              Mean_Gross = mean(gross, na.rm = T)) %>% 
+              mean_imdb_score = round(mean(imdb_score, na.rm = T),3),
+              mean_Gross = round(mean(gross, na.rm = T),3)) %>% 
     arrange(desc(year))
   return(ot1)
 }

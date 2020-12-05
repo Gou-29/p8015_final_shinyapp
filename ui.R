@@ -45,11 +45,11 @@ dashboardPage(
     ),
     fluidRow(
       tabBox(id = "tab", width = 12,
-             tabPanel("TOP plots",
+             tabPanel("TOP Words In Movies",
                       fluidRow(
                         column(8, wordcloud2Output('wordcloud2', width = 800, height = 600)),
                         column(4,
-                               box(title = "Top plots in selected genres:",
+                               box(title = "Top words in selected genres:",
                                    solidHeader = T,
                                    width = 12,
                                    collapsible = T,
@@ -57,20 +57,19 @@ dashboardPage(
                       )
                       
              ),
-             tabPanel("Radar plot", id = "radar", 
-                      fluidRow( 
-                        column(6, plotlyOutput("plot1")),
-                        column(6, plotlyOutput("plot2"))),
+             tabPanel("Historical TOP 50",
                       fluidRow(
-                        column(12, 
-                        box(title = "Data in actual scale:",
-                                    solidHeader = T,
-                                    width = 12,
-                                    collapsible = T,
-                                    div(DT::DTOutput("Radar"), style = "font-size: 100%;"))))
-
+                        column(7, imageOutput("plot5", height = 800)), 
+                        column(5, 
+                               box(title = "In selected genres, they are in history top 50:",
+                                   solidHeader = T,
+                                   width = 12,
+                                   collapsible = T,
+                                   div(DT::DTOutput("Circulation"), style = "font-size: 100%;")))
+                      )
+                      
              ),
-             tabPanel("Mean_Gross over time",
+             tabPanel("Mean Gross box office over time",
                       fluidRow(
                         column(1),
                         column(4, imageOutput("plot3")),
@@ -94,11 +93,11 @@ dashboardPage(
                         
                       )
              ),
-             tabPanel("Gross vs. Everything!",
+             tabPanel("Gross box office vs. Everything!",
                       fluidRow(
                         box(width = 8, 
                         checkboxGroupInput(inputId = "varlist",
-                                           label = 'Varibale:', 
+                                           label = 'Please Select Varibale:', 
                                            choices = c("num_critic_for_reviews" = "num_critic_for_reviews",
                                                        "num_voted_users" = "num_voted_users",
                                                        "num_user_for_reviews" = "num_user_for_reviews",
@@ -118,7 +117,9 @@ dashboardPage(
                         submitButton("Update Variable list")),
                         box(width = 4, 
                             title = "Note",
-                            "Pleaes select no more than 4 variables. Additional varialbles wil be ignored")
+                            "Pleaes select no more than 4 variables. Additional varialbles wil be ignored. For regression,
+                            a single linear regression is conduct. The regression coefficient, standard error of coefficeint
+                            , t statistics and p value of the slope are reported")
                       ),
                       
                       fluidRow(
@@ -155,18 +156,20 @@ dashboardPage(
                       )
                       
              ),
-             tabPanel("Circulation plot",
+             tabPanel("Radar Analysis", id = "radar", 
+                      fluidRow( 
+                        column(6, plotlyOutput("plot1")),
+                        column(6, plotlyOutput("plot2"))),
                       fluidRow(
-                        column(7, imageOutput("plot5", height = 800)), 
-                        column(5, 
-                               box(title = "Top Movies in history:",
+                        column(12, 
+                               box(title = "Data in actual scale:",
                                    solidHeader = T,
                                    width = 12,
                                    collapsible = T,
-                                   div(DT::DTOutput("Circulation"), style = "font-size: 100%;")))
-                               )
+                                   div(DT::DTOutput("Radar"), style = "font-size: 100%;"))))
                       
              )
+
              
              
       )
