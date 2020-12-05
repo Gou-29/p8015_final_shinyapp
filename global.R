@@ -146,8 +146,6 @@ plot_animation_year <- function(Genreslist_Animation){
 }
 
 
-
-
 ## 3. Circular plot
 
 plot_circulate <- function(Genrelist_Circulate)
@@ -200,7 +198,7 @@ plot_grossplus <- function(Genrelist_gross, selected_var)
     geom_point(aes(frame = genres, ids = movie_title, alpha = gross)) +
     theme(legend.position = "none") +
     geom_smooth(aes(frame = genres), method = "lm", se= F) +
-    ggtitle(str_c("Gross v.s. ", selected_var))
+    ggtitle(str_c("Versus ", selected_var))
   ggplotly(gg)
  
   
@@ -299,7 +297,7 @@ gross_lm_df <- function(Genrelist_lm, selected_var)
     filter(genres %in% Genrelist_lm, title_year > 1980, imdb_score > 3) %>% 
     select(gross, selected_var, genres)
   
-  lm_result <- tibble(dummy = 0, genres = "")
+  lm_result <- tibble(Terms = "",Value = 0,  genres = "")
   
   
   #return(lm_result)
@@ -314,12 +312,13 @@ gross_lm_df <- function(Genrelist_lm, selected_var)
     lm_result_sub  <- lm(gross~., data = lm_df_sub) 
     lm_result_sub <-  
       broom::tidy(lm_result_sub) %>% 
-      column_to_rownames("term") %>%
-      t() %>% 
-      as_tibble() %>% 
-      select(selected_var) %>% 
-      rename(dummy = selected_var) %>% 
-      mutate(genres = t)
+      pivot_longer(estimate:p.value, 
+                   names_to = "Terms", 
+                   values_to = "Value") %>% 
+      slice(-1,-2,-3,-4) %>% 
+      mutate(genres = t) %>% 
+      select(-term) %>% 
+      mutate(Value = round(Value, 3))
     
     lm_result <-
       rbind(lm_result, lm_result_sub)

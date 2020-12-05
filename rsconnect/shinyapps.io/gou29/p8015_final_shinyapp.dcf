@@ -5,9 +5,9 @@ account: gou29
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 3346268
-bundleId: 3946689
+bundleId: 3946789
 url: https://gou29.shinyapps.io/p8015_final_shinyapp/
-when: 1607154794.31844
+when: 1607157491.58584
 asMultiple: FALSE
 asStatic: FALSE
 ignoredFiles: README.md

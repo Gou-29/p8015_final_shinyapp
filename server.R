@@ -183,13 +183,17 @@ shinyServer(
   
   output$Wordcloud <- DT::renderDataTable(Word_df(input$GenreList))
   
-  output$lm_1 <- DT::renderDataTable(gross_lm_df(input$GenreList,input$varlist[1]))
+  output$lm_1 <- DT::renderDataTable(gross_lm_df(input$GenreList,input$varlist[1]),
+                                     options = list(pageLength = 8, lengthChange = FALSE))
   
-  output$lm_2 <- DT::renderDataTable(gross_lm_df(input$GenreList,input$varlist[2]))
+  output$lm_2 <- DT::renderDataTable(gross_lm_df(input$GenreList,input$varlist[2]),
+                                     options = list(pageLength = 8, lengthChange = FALSE))
   
-  output$lm_3 <- DT::renderDataTable(gross_lm_df(input$GenreList,input$varlist[3]))
+  output$lm_3 <- DT::renderDataTable(gross_lm_df(input$GenreList,input$varlist[3]),
+                                     options = list(pageLength = 8, lengthChange = FALSE))
   
-  output$lm_4 <- DT::renderDataTable(gross_lm_df(input$GenreList,input$varlist[4]))
+  output$lm_4 <- DT::renderDataTable(gross_lm_df(input$GenreList,input$varlist[4]),
+                                     options = list(pageLength = 8, lengthChange = FALSE))
   
   output$animation_1 <- DT::renderDataTable(animation_month_df(input$GenreList))
   
